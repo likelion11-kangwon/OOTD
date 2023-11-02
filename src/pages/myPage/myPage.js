@@ -1,9 +1,5 @@
-function MyPage(){
-  return(
-    <div>
-      page
-    </div>
-  )
+function MyPage() {
+    return <div>page</div>;
 }
 
 export default MyPage;
