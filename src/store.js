@@ -1,6 +1,4 @@
-import { legacy_createStore as createStore, applyMiddleware } from 'redux';
-import { createLogger } from 'redux-logger';
+import { legacy_createStore as createStore } from 'redux';
 import reducers from './reducers';
- 
-const logger = createLogger();
-export default createStore(reducers, applyMiddleware(logger));
+
+export default createStore(reducers);
