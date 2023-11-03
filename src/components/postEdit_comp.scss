@@ -1,0 +1,52 @@
+.postEdit{
+    text-align: center;
+
+    // 이미지 컨테이너
+    #imgIn{
+        display: flex;
+        flex-direction: column;
+
+        margin: 2rem;
+
+        button{
+            margin-top: 0.5rem;
+            width: 6rem;
+
+            background: none;
+            border: solid 1px;
+            border-radius: 3px;
+        }
+    }
+
+    // 나머지 입력
+    .postInput{
+        padding: 0.8rem 1.5rem 0.8rem 1.5rem;
+
+        border: solid black 1px;
+        border-left:none;
+        border-right: none;
+    }
+    #categoryIn, #titleIn{
+        border-bottom: none;
+    }
+    .postInput > div{
+        text-align: left;
+        display: grid;
+        grid-template-columns: 1fr 2.5fr;
+    }
+
+    #categoryIn{
+        span{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0.5rem;
+        }
+        button{
+            border: none;
+            background-color: #e3e3e3;
+        }
+    }
+    input, textarea{
+        border: none;
+    }
+}

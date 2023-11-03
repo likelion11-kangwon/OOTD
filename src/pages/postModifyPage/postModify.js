@@ -1,9 +1,5 @@
-function PostModify(){
-  return(
-    <div>
-      page
-    </div>
-  )
+function PostModify() {
+    return <div>page</div>;
 }
 
 export default PostModify;
