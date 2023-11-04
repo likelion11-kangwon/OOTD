@@ -21,7 +21,6 @@ const BoardList = () => {
 
     const [search, setSearch] = useState({
         page: 1,
-        sk: '',
         sv: '',
     });
 
@@ -71,7 +70,7 @@ const BoardList = () => {
     };
 
     const onSearch = () => {
-        if (search.sk !== '' && search.sv !== '') {
+        if (search.sv !== '') {
             setSearch({
                 ...search,
                 page: 1,
@@ -83,7 +82,7 @@ const BoardList = () => {
 
     useEffect(() => {
         getBoardList();
-    }, [ search ]);
+    }, [search]);
     return (
         <div>
             <Header />
@@ -120,11 +119,11 @@ const BoardList = () => {
             </div>
             <br />
             <div>
-                <select name="sk" onChange={onChange}>
-                    <option value="">-선택-</option>
-                    <option value="title">제목</option>
-                    <option value="contents">내용</option>
-                </select>
+                {/*<select name="sk" onChange={onChange}>*/}
+                {/*    /!*<option value="">-선택-</option>*!/*/}
+                {/*    /!*<option value="title">제목</option>*!/*/}
+                {/*    /!*<option value="contents">내용</option>*!/*/}
+                {/*</select>*/}
                 <input type="text" name="sv" id="" onChange={onChange} />
                 <button onClick={onSearch}>검색</button>
             </div>
