@@ -4,7 +4,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SignIn from './pages/signInPage/signIn';
 import Main from './pages/mainPage/main';
-import BoardList from './pages/boardPage/boardList';
+import BoardList from './pages/boardPage/BoardList';
 //게시글 상세페이지 추가
 import BoardDetail from './pages/boardDetailPage/BoardDetail';
 import MyPage from './pages/myPage/myPage';
@@ -18,7 +18,7 @@ const Router = () => {
                 <Route path="/" element={<SignIn />} />
                 <Route path="/main" element={<Main />} />
                 <Route path="/board" element={<BoardList />} />
-                <Route path="/board/:idx" element={<BoardDetail />} />
+                <Route path="/board/:postId" element={<BoardDetail />} />
                 <Route path="/myPage" element={<MyPage />} />
                 <Route path="/newPost" element={<NewPost />} />
                 <Route path="/postModify" element={<PostModify />} />
