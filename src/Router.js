@@ -6,7 +6,6 @@ import SignIn from './pages/signInPage/signIn';
 import SignUp from './pages/signUpPage/signUp';
 import Main from './pages/mainPage/main';
 import BoardList from './pages/boardPage/boardList';
-//게시글 상세페이지 추가
 import BoardDetail from './pages/boardDetailPage/BoardDetail';
 import MyPage from './pages/myPage/myPage';
 import NewPost from './pages/newPostPage/newPost';
@@ -20,7 +19,7 @@ const Router = () => {
                 <Route path="/signUp" element={<SignUp />} />
                 <Route path="/main" element={<Main />} />
                 <Route path="/board" element={<BoardList />} />
-                <Route path="/board/:idx" element={<BoardDetail />} />
+                <Route path="/board/:postId" element={<BoardDetail />} />
                 <Route path="/myPage" element={<MyPage />} />
                 <Route path="/newPost" element={<NewPost />} />
                 <Route path="/postModify" element={<PostModify />} />
