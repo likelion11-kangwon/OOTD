@@ -1,0 +1,156 @@
+.login-frame {
+    width: 100vw;
+    height: auto;
+    background: #000;
+
+    .login-box {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 40px;
+        gap: 71px;
+
+        .service-name-login {
+            display: flex;
+            height: 385px;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+
+            .service-name {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: -44px;
+
+                .what-is {
+                    color: #fff;
+                    text-align: center;
+                    font-family: Poppins;
+                    font-size: 72px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: normal;
+                    letter-spacing: -4px;
+                    opacity: 0.4;
+                }
+
+                .your-ootd {
+                    color: #fff;
+                    text-align: center;
+                    font-family: Poppins;
+                    font-size: 62px;
+                    font-style: italic;
+                    font-weight: 275;
+                    line-height: normal;
+                    letter-spacing: -7px;
+                }
+            }
+
+            .id-password-login-signup {
+                display: flex;
+                padding: 2px 0px;
+                flex-direction: column;
+                align-items: center;
+                gap: 13px;
+                align-self: stretch;
+
+                .id-password {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 13px;
+                    align-self: stretch;
+
+                    .id-box {
+                        display: flex;
+                        height: 38px;
+                        padding: 12px 24px;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 12px;
+                        align-self: stretch;
+                        border-radius: 12px;
+                        border: 1px solid #b2aeb1;
+
+                        .id {
+                            display: flex;
+                            width: 121px;
+                            height: 19px;
+                            flex-direction: column;
+                            justify-content: center;
+                            color: #fff;
+                            text-align: center;
+                            font-family: Pretendard;
+                            font-size: 17px;
+                            font-style: normal;
+                            font-weight: 500;
+                            line-height: 22px;
+                        }
+                    }
+
+                    .password-box {
+                        display: flex;
+                        height: 38px;
+                        padding: 12px 24px;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 12px;
+                        align-self: stretch;
+                        border-radius: 12px;
+                        border: 1px solid #b2aeb1;
+
+                        .password {
+                            display: flex;
+                            width: 121px;
+                            height: 19px;
+                            flex-direction: column;
+                            justify-content: center;
+                            color: #fff;
+                            text-align: center;
+                            font-family: Pretendard;
+                            font-size: 17px;
+                            font-style: normal;
+                            font-weight: 500;
+                            line-height: 22px;
+                        }
+                    }
+                }
+
+                .login-signup {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    align-self: stretch;
+
+                    .login {
+                        color: var(--Gray1, #8e8e93);
+                        text-align: center;
+                        font-family: Pretendard;
+                        font-size: 17px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 22px;
+                    }
+
+                    .signup {
+                        color: var(--Gray1, #8e8e93);
+                        text-align: center;
+                        font-family: Pretendard;
+                        font-size: 17px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 22px;
+                    }
+                }
+            }
+        }
+
+        .wave {
+            width: 100vw;
+            height: auto;
+        }
+    }
+}
