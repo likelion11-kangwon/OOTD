@@ -6,7 +6,7 @@ import SignIn from './pages/signInPage/signIn';
 import Main from './pages/mainPage/main';
 import BoardList from './pages/boardPage/boardList';
 //게시글 상세페이지 추가
-import BoardDetail from './pages/boardDetailPage/boardDetail';
+import BoardDetail from './pages/boardDetailPage/BoardDetail';
 import MyPage from './pages/myPage/myPage';
 import NewPost from './pages/newPostPage/newPost';
 import PostModify from './pages/postModifyPage/postModify';

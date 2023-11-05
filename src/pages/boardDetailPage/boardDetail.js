@@ -1,7 +1,0 @@
-import React from 'react';
-
-const boardDetail = () => {
-    return <div>게시판 상세보기</div>;
-};
-
-export default boardDetail;
