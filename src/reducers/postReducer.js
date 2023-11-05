@@ -1,10 +1,10 @@
 import * as types from '../actions/actionTyeps'; //액션 코드로 가져온다.
 
 const post_reducer = {
-    postImageUrl: null,
-    category: null,
-    title: '리덕스 테스트',
-    contents: null,
+    postImageUrl: undefined,
+    category: undefined,
+    title: undefined,
+    contents: undefined,
 };
 export default function postReducer(state = post_reducer, action) {
     switch (action.type) {

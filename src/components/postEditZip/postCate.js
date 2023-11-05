@@ -17,7 +17,7 @@ export default function PostCate() {
             '#e3e3e3',
         );
 
-        let category = null;
+        let category = undefined;
         switch (cate) {
             case 0:
                 category = 'clothes';

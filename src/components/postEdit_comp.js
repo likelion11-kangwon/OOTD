@@ -1,6 +1,5 @@
-import store from '../store';
-
 import PostCate from './postEditZip/postCate';
+import PostText from './postEditZip/postText';
 import './postEdit_comp.scss';
 
 function PostEditComp({ imgPath }) {
@@ -17,29 +16,7 @@ function PostEditComp({ imgPath }) {
                 </div>
             </div>
             <PostCate />
-            <div className="postInput" id="titleIn">
-                <div>
-                    <label htmlFor="title">Title</label>
-                    <input
-                        id="title"
-                        type="text"
-                        placeholder="제목을 입력하세요"
-                        value={store.getState().postReducer.title}
-                    />
-                </div>
-            </div>
-            <div className="postInput" id="contentsIn">
-                <div>
-                    <label htmlFor="contents">Comment</label>
-                    <textarea
-                        id="contents"
-                        type="text"
-                        rows={5}
-                        placeholder="문구를 입력하세요"
-                        value={store.getState().postReducer.contents}
-                    />
-                </div>
-            </div>
+            <PostText />
         </div>
     );
 }
