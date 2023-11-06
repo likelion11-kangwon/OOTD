@@ -8,7 +8,7 @@ const BoardList = () => {
     const [currentPost, setCurrentPost] = useState([]);
     const [page, setPage] = useState(1);
 
-    const postPerPage = 6;
+    const postPerPage = 4;
     const indexOfLastPost = page * postPerPage;
     const indexOfFirstPost = indexOfLastPost - postPerPage;
     const handlePageChange = page => {
@@ -26,6 +26,7 @@ const BoardList = () => {
             });
     }, []);
 
+    //for pagination
     useEffect(() => {
         setCurrentPost(boardList.slice(indexOfFirstPost, indexOfLastPost));
     }, [boardList, page]);
@@ -43,21 +44,21 @@ const BoardList = () => {
                 {/*    <col width="20%" />*/}
                 {/*</colgroup>*/}
                 <tbody>
-                    {boardList.map((board, postId) => {
+                    {boardList.map((board, id) => {
                         return (
-                            <tr key={postId}>
+                            <tr key={id}>
                                 <td className="title">
-                                    <Link to={`/board/${board.postId}`}>
+                                    <Link to={`/board/${board.id}`}>
                                         {board.title}
                                     </Link>
                                 </td>
-                                <td className="comment">
-                                    <Link to={`/board/${board.postId}`}>
-                                        {board.comment}
+                                <td className="contents">
+                                    <Link to={`/board/${board.id}`}>
+                                        {board.contents}
                                     </Link>
                                 </td>
                                 <td className="postImage">
-                                    <Link to={`/board/${board.postId}`}>
+                                    <Link to={`/board/${board.id}`}>
                                         {board.postImageUrl}
                                     </Link>
                                 </td>
@@ -70,7 +71,7 @@ const BoardList = () => {
                 activePage={page}
                 itemsCountPerPage={postPerPage}
                 totalItemsCount={boardList.length}
-                pageRangeDisplayed={6}
+                pageRangeDisplayed={4}
                 prevPageText="<"
                 nextPageText=">"
                 onChange={handlePageChange}
