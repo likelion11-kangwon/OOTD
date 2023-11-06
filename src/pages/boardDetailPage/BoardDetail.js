@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+// import Comment from '../../components/comment/Comment';
 
 //상세페이지
-
 const BoardDetail = () => {
     const params = useParams().id;
     const navigate = useNavigate();
@@ -13,24 +13,45 @@ const BoardDetail = () => {
     const [detailBoardData, setDetailBoardData] = useState([]);
     const [boardCommentData, setBoardCommentData] = useState([]);
 
-    const sendComment(e) {
-        e.preventDefault();
-        console.log(comment)
-        if(comment === ""){
-            alert("write your commment")
-        } else{
-            const userData ={
-                id: sessionStorage.getItem("id"),
-                comment: comment,
-                title: location.state.props.title
-            }
-            axios.post("http://localhost:8080/api/user/comment", userData) //user/comment에서 가져옴
-                // .then((response) => {
-                //     if( response.status === 200 )
-                //         window.location.reload()
-                // })
+    // const [CommentValue, setCommentValue] = useState("");
+    const onCommentChange = (e) => {
+        setCommentValue(e.currentTarget.value);
+    };
+
+    const onCommentSubmit = () => {
+        if (
+            CommentValue === "" ||
+            CommentValue === null ||
+            CommentValue === undefined
+        )
+        {
+            alert("댓글 입력");
+            return false;
         }
-    }
+        const comment = {
+            id: 0,
+            content: CommentValue,
+        }
+    };
+
+    // const sendComment = (e) => {
+    //     e.preventDefault();
+    //     console.log(comment)
+    //     if(comment === ""){
+    //         alert("write your commment")
+    //     } else{
+    //         const userData ={
+    //             id: sessionStorage.getItem("id"),
+    //             comment: comment,
+    //             title: location.state.props.title
+    //         }
+    //         axios.post("http://localhost:8080/api/user/comment", userData) //user/comment에서 가져옴
+    //             // .then((response) => {
+    //             //     if( response.status === 200 )
+    //             //         window.location.reload()
+    //             // })
+    //     }
+    // }
 
     useEffect(() => {
         axios
@@ -76,22 +97,30 @@ const BoardDetail = () => {
                     Comment box
                 </h4>
                 <div className='comment-box-body'>
-                    <Table>
-                        <thead>
-                        <tr>
-                            <th>작성자</th>
-                            <th>댓글</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        { comments ? comments.map(co => {
-                            return( <Comment
-                                id = {co.id}
-                                comment={c.comments}>
-                            </Comment> );
-                        })};
-                        </tbody>
-                    </Table>
+                    {/*<Table>*/}
+                    {/*    <thead>*/}
+                    {/*    <tr>*/}
+                    {/*        <th>작성자</th>*/}
+                    {/*        <th>댓글</th>*/}
+                    {/*    </tr>*/}
+                    {/*    </thead>*/}
+                    {/*    <tbody>*/}
+                    {/*    { comments ? comments.map(co => {*/}
+                    {/*        return( <Comment*/}
+                    {/*            id = {co.id}*/}
+                    {/*            comment={c.comments}>*/}
+                    {/*        </Comment> )*/}
+                    {/*    })}*/}
+                    {/*    </tbody>*/}
+                    {/*</Table>*/}
+                    <div>
+                        <div className='comment'>
+                            {props.handleComment}
+                        </div>
+                        {/*<Comment*/}
+                        {/*    comment = {CommentValue}*/}
+                        {/*    handleCommitSubmit={onCommentSubmit} />*/}
+                    </div>
                     <h3>comments</h3>
                     <input type="text" value={comment} onChange={handleComment}> </input>
                     <Button onClick = {sendComment}>댓글 submit</Button>
