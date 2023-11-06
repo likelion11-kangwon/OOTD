@@ -8,7 +8,7 @@ const BoardList = () => {
     const [currentPost, setCurrentPost] = useState([]);
     const [page, setPage] = useState(1);
 
-    const postPerPage = 6;
+    const postPerPage = 4;
     const indexOfLastPost = page * postPerPage;
     const indexOfFirstPost = indexOfLastPost - postPerPage;
     const handlePageChange = page => {
