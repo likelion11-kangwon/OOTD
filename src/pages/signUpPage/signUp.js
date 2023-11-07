@@ -22,10 +22,6 @@ function SignUp() {
             [id]: value,
         });
 
-        if (id === 'id') {
-            checkUniqueId(value);
-        }
-
         if (id === 'passwordCheck') {
             const passwordMatch = formData.password === value;
             setIsPasswordMatch(passwordMatch);
@@ -44,17 +40,7 @@ function SignUp() {
         }
     };
 
-    const checkUniqueId = async id => {
-        try {
-            const response = await axios.post('/api/checkUniqueId', { id });
-            setIsUniqueId(response.data.isUnique);
-        } catch (error) {
-            console.error('Error checking unique ID:', error);
-            setIsUniqueId(false);
-        }
-    };
-
-    const handleSignUp = async () => {
+    const handleSignUp = () => {
         if (
             formData.username &&
             formData.id &&
@@ -64,7 +50,7 @@ function SignUp() {
             isPasswordMatch
         ) {
             try {
-                const response = await axios.post('/api/signup', formData);
+                axios.post('/api/auth/register', formData);
             } catch (error) {
                 console.error('Error during signup:', error);
             }
@@ -102,21 +88,6 @@ function SignUp() {
                                 value={formData.id}
                                 onChange={handleInputChange}
                             />
-                            <div className="id-confirm">
-                                <img
-                                    src={Confirm}
-                                    alt="confirm"
-                                    className="confirm"
-                                    style={{
-                                        fill:
-                                            isUniqueId === null
-                                                ? 'initial'
-                                                : isUniqueId
-                                                ? 'green'
-                                                : 'red',
-                                    }}
-                                />
-                            </div>
                         </div>
                         <div className="password-box">
                             <input

@@ -1,4 +1,5 @@
-import { useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import BoardPage from '../boardPage/BoardList_dev';
 import React from 'react';
 import { MdOutlineNavigateNext } from 'react-icons/md';
 import { BiSolidUserCircle } from 'react-icons/bi';
