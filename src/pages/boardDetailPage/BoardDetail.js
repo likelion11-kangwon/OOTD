@@ -55,7 +55,6 @@ function BoardDetail() {
                     <div className="postCardT">
                         <div>{title}</div>
                         <img src={heartImg} alt="like" />
-                        {/* TODO 하트 아이콘 조건부랜더링 및 서버에서 get*/}
                     </div>
                     <div>{contents}</div>
                 </div>
