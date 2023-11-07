@@ -28,7 +28,7 @@ function NewPost() {
      */
     const postNewPost = () => {
         axios
-            .post(`${SERVER_URL}/newPost`, store.getState().postReducer)
+            .post(`${SERVER_URL}/api/post`, store.getState().postReducer)
             .then(() => {
                 navigate('/main');
             })
