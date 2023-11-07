@@ -1,13 +1,30 @@
+import React, { useState } from 'react';
 import '../../styles/myPage.scss';
 import Profile from '../../assets/images/profile.png';
 import Pencil from '../../assets/images/pencil.svg';
 import Heart from '../../assets/images/heart.svg';
-import Picture1 from '../../assets/images/picture1.png';
-import Picture2 from '../../assets/images/picture2.png';
-import Picture3 from '../../assets/images/picture3.png';
-import Picture4 from '../../assets/images/picture4.png';
+import registrationData from './registrationData ';
+import postData from './postData';
+import { Link } from 'react-router-dom';
 
 function MyPage() {
+    const username = registrationData.username;
+    const [currentPage, setCurrentPage] = useState(0);
+
+    const totalPages = postData.length;
+
+    const pages = Array.from({ length: totalPages }, (_, i) => i);
+    const currentPosts =
+        pages[currentPage] !== undefined
+            ? postData[pages[currentPage]].filter(post => post !== null)
+            : [];
+
+    const handlePageChange = page => {
+        if (page >= 0 && page < totalPages) {
+            setCurrentPage(page);
+        }
+    };
+
     return (
         <div className="mypage-frame">
             <div className="mypage-box">
@@ -20,7 +37,7 @@ function MyPage() {
                                 className="profile-img"
                             />
                         </div>
-                        <div className="name">Like Lion</div>
+                        <div className="name">{username}</div>
                     </div>
                     <div className="post-likes">
                         <div className="new-post">
@@ -33,7 +50,9 @@ function MyPage() {
                                     />
                                 </div>
                             </div>
-                            <div className="new-post-text">New Post</div>
+                            <Link className="new-post-text" to="/newPost">
+                                New Post
+                            </Link>
                         </div>
                         <div className="my-likes">
                             <div className="likes-icon">
@@ -45,122 +64,71 @@ function MyPage() {
                                     />
                                 </div>
                             </div>
-                            <div className="my-likes-text">My Likes</div>
+                            <div
+                                className="my-likes-text"
+                                onClick={() => {
+                                    alert(
+                                        'My Likes 기능은 아직 구현되지 않았습니다.',
+                                    );
+                                }}
+                            >
+                                My Likes
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div className="mypost-box">
                     <div className="mypost-count">
                         <div className="mypost-count-text">My Post</div>
-                        <div className="mypost-count-number">12</div>
-                    </div>
-                    <div className="picture-box">
-                        <div className="picture-one">
-                            <div className="picture-one-image">
-                                <img
-                                    src={Picture1}
-                                    alt="picture1"
-                                    className="picture1-img"
-                                />
-                            </div>
-                            <div className="picture-one-edit-del-box">
-                                <div className="picture-one-edit-del">
-                                    <div className="picture-one-edit-box">
-                                        <div className="picture-one-edit">
-                                            edit
-                                        </div>
-                                    </div>
-                                    <div className="picture-one-del-box">
-                                        <div className="picture-one-del">
-                                            del
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="picture-two">
-                            <div className="picture-two-image">
-                                <img
-                                    src={Picture2}
-                                    alt="picture2"
-                                    className="picture2-img"
-                                />
-                            </div>
-                            <div className="picture-two-edit-del-box">
-                                <div className="picture-two-edit-del">
-                                    <div className="picture-two-edit-box">
-                                        <div className="picture-two-edit">
-                                            edit
-                                        </div>
-                                    </div>
-                                    <div className="picture-two-del-box">
-                                        <div className="picture-two-del">
-                                            del
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="picture-three">
-                            <div className="picture-three-image">
-                                <img
-                                    src={Picture3}
-                                    alt="picture3"
-                                    className="picture3-img"
-                                />
-                            </div>
-                            <div className="picture-three-edit-del-box">
-                                <div className="picture-three-edit-del">
-                                    <div className="picture-three-edit-box">
-                                        <div className="picture-three-edit">
-                                            edit
-                                        </div>
-                                    </div>
-                                    <div className="picture-three-del-box">
-                                        <div className="picture-three-del">
-                                            del
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="picture-four">
-                            <div className="picture-four-image">
-                                <img
-                                    src={Picture4}
-                                    alt="picture4"
-                                    className="picture4-img"
-                                />
-                            </div>
-                            <div className="picture-four-edit-del-box">
-                                <div className="picture-four-edit-del">
-                                    <div className="picture-four-edit-box">
-                                        <div className="picture-four-edit">
-                                            edit
-                                        </div>
-                                    </div>
-                                    <div className="picture-four-del-box">
-                                        <div className="picture-four-del">
-                                            del
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div className="mypost-count-number">
+                            {postData.reduce(
+                                (acc, page) => acc + (page ? page.length : 0),
+                                0,
+                            )}
                         </div>
                     </div>
-                    <div className="mypage-number-box">
-                        <div className="mypage-number">
-                            <div className="mypage-number-one">
-                                <div className="mypage-number-one-text">1</div>
-                            </div>
-                            <div className="mypage-number-two">
-                                <div className="mypage-number-two-text">2</div>
-                            </div>
-                            <div className="mypage-number-three">
-                                <div className="mypage-number-three-text">
-                                    3
+                    <div className="picture-container">
+                        {currentPosts.map((post, index) => (
+                            <div className="picture-box" key={index}>
+                                <div className="picture-image">
+                                    <img
+                                        src={post.postImageUrl}
+                                        alt={`post-preview-${post.postId}`}
+                                        className="post-preview"
+                                    />
+                                </div>
+                                <div className="picture-edit-del-box">
+                                    <div className="picture-edit-del">
+                                        <div className="picture-edit-box">
+                                            <div className="picture-edit">
+                                                edit
+                                            </div>
+                                        </div>
+                                        <div className="picture-del-box">
+                                            <div className="picture-del">
+                                                del
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                        ))}
+                    </div>
+                    <div className="mypage-number-container">
+                        <div className="mypage-number-box">
+                            {pages.map((page, index) => (
+                                <div
+                                    className={`mypage-number ${
+                                        currentPage === page ? 'active' : ''
+                                    }`}
+                                    key={page}
+                                    onClick={() => handlePageChange(page)}
+                                >
+                                    <div className="mypage-number-text">
+                                        {index + 1}
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>

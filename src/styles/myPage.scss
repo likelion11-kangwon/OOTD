@@ -78,6 +78,7 @@
                     }
 
                     .new-post-text {
+                        text-decoration: none;
                         color: #fff;
                         text-align: center;
                         font-family: Pretendard;
@@ -161,7 +162,7 @@
                 }
             }
 
-            .picture-box {
+            .picture-container {
                 display: flex;
                 width: 320px;
                 justify-content: center;
@@ -170,39 +171,39 @@
                 gap: 20px 16px;
                 flex-wrap: wrap;
 
-                .picture-one {
+                .picture-box {
                     display: flex;
                     flex-direction: column;
                     align-items: flex-start;
                     gap: 12px;
 
-                    .picture-one-image {
+                    .picture-image {
                         display: flex;
                         width: 152px;
                         height: 152px;
                         justify-content: center;
                         align-items: center;
 
-                        .picture1-img {
+                        .post-preview {
                             width: 152px;
                             height: 152px;
                             flex-shrink: 0;
                         }
                     }
 
-                    .picture-one-edit-del-box {
+                    .picture-edit-del-box {
                         display: flex;
                         flex-direction: column;
                         align-items: flex-end;
                         gap: 10px;
                         align-self: stretch;
 
-                        .picture-one-edit-del {
+                        .picture-edit-del {
                             display: flex;
                             align-items: flex-start;
                             gap: 12px;
 
-                            .picture-one-edit-box {
+                            .picture-edit-box {
                                 display: flex;
                                 padding: 2px 8px;
                                 justify-content: center;
@@ -211,7 +212,7 @@
                                 border-radius: 4px;
                                 background: #d4d4d4;
 
-                                .picture-one-edit {
+                                .picture-edit {
                                     color: #555;
                                     text-align: center;
                                     font-family: Pretendard;
@@ -222,7 +223,7 @@
                                 }
                             }
 
-                            .picture-one-del-box {
+                            .picture-del-box {
                                 display: flex;
                                 padding: 2px 8px;
                                 justify-content: center;
@@ -231,232 +232,7 @@
                                 border-radius: 4px;
                                 background: #d4d4d4;
 
-                                .picture-one-del {
-                                    color: #555;
-                                    text-align: center;
-                                    font-family: Pretendard;
-                                    font-size: 16px;
-                                    font-style: normal;
-                                    font-weight: 400;
-                                    line-height: normal;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                .picture-two {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-                    gap: 12px;
-
-                    .picture-two-image {
-                        display: flex;
-                        width: 152px;
-                        height: 152px;
-                        justify-content: center;
-                        align-items: center;
-
-                        .picture2-img {
-                            width: 152px;
-                            height: 152px;
-                            flex-shrink: 0;
-                        }
-                    }
-
-                    .picture-two-edit-del-box {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: flex-end;
-                        gap: 10px;
-                        align-self: stretch;
-
-                        .picture-two-edit-del {
-                            display: flex;
-                            align-items: flex-start;
-                            gap: 12px;
-
-                            .picture-two-edit-box {
-                                display: flex;
-                                padding: 2px 8px;
-                                justify-content: center;
-                                align-items: center;
-                                gap: 10px;
-                                border-radius: 4px;
-                                background: #d4d4d4;
-
-                                .picture-two-edit {
-                                    color: #555;
-                                    text-align: center;
-                                    font-family: Pretendard;
-                                    font-size: 16px;
-                                    font-style: normal;
-                                    font-weight: 400;
-                                    line-height: normal;
-                                }
-                            }
-
-                            .picture-two-del-box {
-                                display: flex;
-                                padding: 2px 8px;
-                                justify-content: center;
-                                align-items: center;
-                                gap: 10px;
-                                border-radius: 4px;
-                                background: #d4d4d4;
-
-                                .picture-two-del {
-                                    color: #555;
-                                    text-align: center;
-                                    font-family: Pretendard;
-                                    font-size: 16px;
-                                    font-style: normal;
-                                    font-weight: 400;
-                                    line-height: normal;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                .picture-three {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-                    gap: 12px;
-
-                    .picture-three-image {
-                        display: flex;
-                        width: 152px;
-                        height: 152px;
-                        justify-content: center;
-                        align-items: center;
-
-                        .picture3-img {
-                            width: 152px;
-                            height: 152px;
-                            flex-shrink: 0;
-                        }
-                    }
-
-                    .picture-three-edit-del-box {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: flex-end;
-                        gap: 10px;
-                        align-self: stretch;
-
-                        .picture-three-edit-del {
-                            display: flex;
-                            align-items: flex-start;
-                            gap: 12px;
-
-                            .picture-three-edit-box {
-                                display: flex;
-                                padding: 2px 8px;
-                                justify-content: center;
-                                align-items: center;
-                                gap: 10px;
-                                border-radius: 4px;
-                                background: #d4d4d4;
-
-                                .picture-three-edit {
-                                    color: #555;
-                                    text-align: center;
-                                    font-family: Pretendard;
-                                    font-size: 16px;
-                                    font-style: normal;
-                                    font-weight: 400;
-                                    line-height: normal;
-                                }
-                            }
-
-                            .picture-three-del-box {
-                                display: flex;
-                                padding: 2px 8px;
-                                justify-content: center;
-                                align-items: center;
-                                gap: 10px;
-                                border-radius: 4px;
-                                background: #d4d4d4;
-
-                                .picture-three-del {
-                                    color: #555;
-                                    text-align: center;
-                                    font-family: Pretendard;
-                                    font-size: 16px;
-                                    font-style: normal;
-                                    font-weight: 400;
-                                    line-height: normal;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                .picture-four {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-                    gap: 12px;
-
-                    .picture-four-image {
-                        display: flex;
-                        width: 152px;
-                        height: 152px;
-                        justify-content: center;
-                        align-items: center;
-
-                        .picture4-img {
-                            width: 152px;
-                            height: 152px;
-                            flex-shrink: 0;
-                        }
-                    }
-
-                    .picture-four-edit-del-box {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: flex-end;
-                        gap: 10px;
-                        align-self: stretch;
-
-                        .picture-four-edit-del {
-                            display: flex;
-                            align-items: flex-start;
-                            gap: 12px;
-
-                            .picture-four-edit-box {
-                                display: flex;
-                                padding: 2px 8px;
-                                justify-content: center;
-                                align-items: center;
-                                gap: 10px;
-                                border-radius: 4px;
-                                background: #d4d4d4;
-
-                                .picture-four-edit {
-                                    color: #555;
-                                    text-align: center;
-                                    font-family: Pretendard;
-                                    font-size: 16px;
-                                    font-style: normal;
-                                    font-weight: 400;
-                                    line-height: normal;
-                                }
-                            }
-
-                            .picture-four-del-box {
-                                display: flex;
-                                padding: 2px 8px;
-                                justify-content: center;
-                                align-items: center;
-                                gap: 10px;
-                                border-radius: 4px;
-                                background: #d4d4d4;
-
-                                .picture-four-del {
+                                .picture-del {
                                     color: #555;
                                     text-align: center;
                                     font-family: Pretendard;
@@ -471,7 +247,7 @@
                 }
             }
 
-            .mypage-number-box {
+            .mypage-number-container {
                 display: flex;
                 padding: 8px 10px;
                 flex-direction: column;
@@ -480,13 +256,13 @@
                 gap: 10px;
                 align-self: stretch;
 
-                .mypage-number {
+                .mypage-number-box {
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     gap: 4px;
 
-                    .mypage-number-one {
+                    .mypage-number {
                         display: flex;
                         width: 16px;
                         height: 19px;
@@ -494,47 +270,7 @@
                         justify-content: center;
                         align-items: center;
 
-                        .mypage-number-one-text {
-                            width: 16px;
-                            color: var(--MainColor, #a431b9);
-                            text-align: center;
-                            font-family: Pretendard;
-                            font-size: 16px;
-                            font-style: normal;
-                            font-weight: 700;
-                            line-height: normal;
-                        }
-                    }
-
-                    .mypage-number-two {
-                        display: flex;
-                        width: 16px;
-                        height: 19px;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-
-                        .mypage-number-two-text {
-                            width: 16px;
-                            color: var(--Black, #1c1c1e);
-                            text-align: center;
-                            font-family: Pretendard;
-                            font-size: 16px;
-                            font-style: normal;
-                            font-weight: 200;
-                            line-height: normal;
-                        }
-                    }
-
-                    .mypage-number-three {
-                        display: flex;
-                        width: 16px;
-                        height: 19px;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-
-                        .mypage-number-three-text {
+                        .mypage-number-text {
                             width: 16px;
                             color: var(--Black, #1c1c1e);
                             text-align: center;
