@@ -22,7 +22,7 @@ function SignIn() {
 
     const handleLogin = () => {
         axios
-            .post('/api/login', formData)
+            .post('/api/auth/login', formData)
             .then(response => {
                 if (response.data.success) {
                     navigate('/myPage');
