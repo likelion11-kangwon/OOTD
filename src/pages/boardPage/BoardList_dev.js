@@ -1,8 +1,10 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Card from '../../components/Card';
+import { BiSearchAlt } from 'react-icons/bi';
+import Card from '../../components/board/Card';
 import Header from '../../components/header/BoardHeader';
+import '../../styles/board.scss';
 
 const BoardList_dev = () => {
     const [boardList, setBoardList] = useState([]);
@@ -23,7 +25,6 @@ const BoardList_dev = () => {
                 console.log(resp.data);
 
                 setBoardList([...resp.data]);
-                // setTotalCnt()
             })
             .catch(err => {
                 console.log('err');
@@ -51,32 +52,36 @@ const BoardList_dev = () => {
             <div className="board-header">
                 <Header />
             </div>
-            {/*검색*/}
-            <div className="search-box">
-                <div className='"search-bar-section'>
-                    <input
-                        type="text"
-                        className="form-control"
-                        placeholder="search posts"
-                        value={searchVal}
-                        onChange={changeSearch}
-                    />
+            <div className="header-section">
+                <div className="header-text">
+                    <h2>BOARD</h2>
                 </div>
-                <div className="search-button-section">
-                    <button type="button" className="btn" onClick={search}>
-                        검색
-                    </button>
+                {/*검색*/}
+                <div className="search-box">
+                    <div className='"search-bar-section'>
+                        <form className="search">
+                            <input
+                                type="text"
+                                placeholder="search posts"
+                                value={searchVal}
+                                onChange={changeSearch}
+                            />
+                            <button type="button" onClick={search}>
+                                <BiSearchAlt />
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div className="board-container">
                 <div className="row">
-                    {boardList.map((boardList, postId) => {
+                    {boardList.map((boardList, id) => {
                         return (
                             <Link to={`/board/${boardList.id}`}>
                                 <Card
                                     id={boardList.id}
                                     title={boardList.title}
-                                    author={boardList.author}
+                                    username={boardList.username}
                                 />
                             </Link>
                         );

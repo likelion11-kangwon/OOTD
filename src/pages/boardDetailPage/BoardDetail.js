@@ -2,30 +2,25 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '../../components/header/postDetailHeader';
-import CommentWrite from '../../components/comment/CommentWrite';
-import CommentList from '../../components/comment/CommentList';
+import Comment from '../../components/comment/Comment';
+// import CommentList from '../../components/comment/CommentList';
+// import CommentWrite from '../../components/comment/CommentWrite';
 
 //상세페이지
 function BoardDetail() {
-    // state
-    const [postDetail, setPostDetail] = useState([]);
-    const [postId, setPostId] = useState('');
-    const [author, setAuthor] = useState('');
+    const [username, setUsername] = useState('');
     const [title, setTitle] = useState('');
-    // const [content, setConTent] = useState('');
-
+    const [contents, setContents] = useState('');
+    const postId = useParams().postId;
     const getPostDetail = async () => {
         await axios
-            .get(`http://localhost:8090/posts`)
+            .get(`http://localhost:8090/posts/${postId}`)
             .then(resp => {
-                // console.log(params);
-                // console.log(postId);
                 console.log('getPostDetail() success:)');
                 console.log(resp.data);
-                setPostDetail(resp.data);
-                setPostId(resp.data[0].id);
-                setTitle(resp.data[0].title);
-                setAuthor(resp.data[0].author);
+                setTitle(resp.data.title);
+                setUsername(resp.data.username);
+                setContents(resp.data.content);
             })
             .catch(err => {
                 console.log('getPostDetail() error :<');
@@ -48,7 +43,7 @@ function BoardDetail() {
                         <tr>
                             <th className="col-3">작성자</th>
                             <td>
-                                <span>{author}</span>
+                                <span>{username}</span>
                                 {/*<p>{params.id}</p>*/}
                             </td>
                         </tr>
@@ -59,16 +54,15 @@ function BoardDetail() {
                                 <span>{title}</span>
                             </td>
                         </tr>
-                        {/*<tr>*/}
-                        {/*    <th>내용</th>*/}
-                        {/*    <td>*/}
-                        {/*        /!*<span>{comment}</span>*!/*/}
-                        {/*    </td>*/}
-                        {/*</tr>*/}
+                        <tr>
+                            <th>내용</th>
+                            <td>
+                                <span>{contents}</span>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
-                <CommentList postId={postId} />
-                <CommentWrite postId={postId} />
+                <Comment />
             </div>
         </div>
     );
