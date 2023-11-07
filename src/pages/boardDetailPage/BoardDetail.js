@@ -34,24 +34,7 @@ const BoardDetail = () => {
                 console.log('err');
             });
     };
-    // const deletePosts = async () => {
-    //
-    //     await axios.delete(`http://localhost:8090/posts/${params}`)
-    //         .then((resp) => {
-    //             console.log("deletePosts() success :D");
-    //             console.log(resp.data);
-    //
-    //             if (resp.data.deletedRecordCount === 1) {
-    //                 alert("게시글을 성공적으로 삭제했습니다 :D");
-    //                 navigate("/board");
-    //             }
-    //
-    //         }).catch((err) => {
-    //             console.log("[BbsDetail.js] deleteBbs() error :<");
-    //             console.log(err);
-    //         });
-    //
-    // }
+
     useEffect(() => {
         getPostDetail();
     }, []);

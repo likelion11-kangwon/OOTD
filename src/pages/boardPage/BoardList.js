@@ -36,6 +36,9 @@ const BoardList = () => {
             <div className="board-header">
                 <Header />
             </div>
+            {/*<div className="board-search-section">*/}
+            {/*    <Search />*/}
+            {/*</div>*/}
             <div className="board-list">
                 <Link to="/board/newPost">
                     <button className="newPost">글 작성 아이콘</button>

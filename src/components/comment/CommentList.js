@@ -2,8 +2,6 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Pagination from 'react-js-pagination';
 
-// import Comment from './Comment.js';
-
 const CommentList = props => {
     const seq = props.seq;
     // Paging
@@ -12,7 +10,9 @@ const CommentList = props => {
 
     const getCommentList = async () => {
         await axios
-            .get(`http://localhost:8090/comments`)
+            .get(`http://localhost:8090/comments`, {
+                params: { boardSeq: seq, page: page },
+            })
             .then(resp => {
                 console.log('getCommentList () success:)');
                 console.log(resp.data);
@@ -24,18 +24,31 @@ const CommentList = props => {
             });
     };
 
+    const changePage = page => {
+        setPage(page);
+        getCommentList(page);
+    };
     useEffect(() => {
-        getCommentList();
+        getCommentList(1);
     }, []);
 
     return (
         <>
-            <div className="my-1 d-flex justify-content-center">
+            <div className="justify-content-center">
                 <h5>
                     <i className="fas fa-paperclip"></i>
                     댓글 목록
                 </h5>
             </div>
+            <Pagination
+                activePage={page}
+                itemsCountPerPage={4}
+                // totalItemsCount={totalCnt}
+                pageRangeDisplayed={4}
+                prevPageText={'‹'}
+                nextPageText={'›'}
+                onChange={changePage}
+            />
 
             {commentList.map(function (comments, id) {
                 return (
