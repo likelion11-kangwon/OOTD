@@ -1,3 +1,11 @@
 {
-    "dump" : 0
+    "post" : [
+        {
+            "id": 123321,
+            "postImageUrl": "../images/picture3.png",
+            "category": "clothes",
+            "title": "titletitle",
+            "contents": "contentscontents"
+        }
+    ]
 }

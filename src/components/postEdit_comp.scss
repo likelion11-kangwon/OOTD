@@ -5,16 +5,27 @@
     #imgIn{
         display: flex;
         flex-direction: column;
+        align-items: center;
 
         margin: 2rem;
 
-        button{
+        img{
+            object-fit: cover;
+            width: 250px;
+            height: 250px;
+        }
+        label{
+            display: block;
+
             margin-top: 0.5rem;
             width: 6rem;
-
+    
             background: none;
             border: solid 1px;
             border-radius: 3px;
+        }
+        input{
+            display:none;
         }
     }
 

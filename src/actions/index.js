@@ -1,14 +1,26 @@
 import * as types from './actionTyeps';
- 
-export const _create = () =>{
+
+export const _setImage = data => {
     return {
-        type: types._CREATE
-    }
-}
- 
-export const _update = (index) =>{/*인자는 리듀서에서  처리 필요 시 추가 */
+        type: types._SETIMAGE,
+        data,
+    };
+};
+export const _setCategory = data => {
     return {
-        type: types.UPDATE,
-        index 
-    }
-}
+        type: types._SETCATEGOTY,
+        data,
+    };
+};
+export const _setTitle = data => {
+    return {
+        type: types._SETTITLE,
+        data,
+    };
+};
+export const _setContents = data => {
+    return {
+        type: types._SETCONTENTS,
+        data,
+    };
+};

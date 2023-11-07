@@ -1,0 +1,193 @@
+.signup-frame {
+    width: 100vw;
+    height: auto;
+    background: #000;
+
+    .signup-box {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 40px;
+        gap: 60px;
+
+        .service-name-signup {
+            display: flex;
+            height: 423px;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+
+            .service-name {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: -44px;
+
+                .what-is {
+                    color: #fff;
+                    text-align: center;
+                    font-family: Poppins;
+                    font-size: 72px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: normal;
+                    letter-spacing: -4px;
+                    opacity: 0.4;
+                }
+
+                .your-ootd {
+                    color: #fff;
+                    text-align: center;
+                    font-family: Poppins;
+                    font-size: 62px;
+                    font-style: italic;
+                    font-weight: 275;
+                    line-height: normal;
+                    letter-spacing: -7px;
+                }
+            }
+
+            .username-id-password-check {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+
+                .username-box {
+                    display: flex;
+                    width: 290px;
+                    padding: 8px 20px;
+                    justify-content: space-between;
+                    align-items: center;
+                    border-radius: 12px;
+                    border: 1px solid #fff;
+                    background: #000;
+
+                    input {
+                        background: none;
+                        border: none;
+                        color: #fff;
+                        text-align: left;
+                        font-family: Inter;
+                        font-size: 17px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 22px;
+                    }
+
+                    .username-rectangle {
+                        width: 22px;
+                        flex-shrink: 0;
+                        align-self: stretch;
+                    }
+                }
+
+                .id-box {
+                    display: flex;
+                    width: 290px;
+                    padding: 8px 20px;
+                    justify-content: space-between;
+                    align-items: center;
+                    border-radius: 12px;
+                    border: 1px solid #fff;
+                    background: #000;
+
+                    input {
+                        background: none;
+                        border: none;
+                        color: #fff;
+                        text-align: left;
+                        font-family: Inter;
+                        font-size: 17px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 22px;
+                    }
+
+                    .id-confirm {
+                        width: 22px;
+                        height: 21px;
+                        flex-shrink: 0;
+                        fill: #fff;
+                    }
+                }
+
+                .password-box {
+                    display: flex;
+                    width: 290px;
+                    padding: 8px 20px;
+                    justify-content: space-between;
+                    align-items: center;
+                    border-radius: 12px;
+                    border: 1px solid #fff;
+                    background: #000;
+
+                    input {
+                        background: none;
+                        border: none;
+                        color: #fff;
+                        text-align: left;
+                        font-family: Inter;
+                        font-size: 17px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 22px;
+                    }
+
+                    .password-rectangle {
+                        width: 22px;
+                        flex-shrink: 0;
+                        align-self: stretch;
+                    }
+                }
+
+                .password-check-box {
+                    display: flex;
+                    width: 290px;
+                    padding: 8px 20px;
+                    justify-content: space-between;
+                    align-items: center;
+                    border-radius: 12px;
+                    border: 1px solid #fff;
+                    background: #000;
+
+                    input {
+                        background: none;
+                        border: none;
+                        color: #fff;
+                        text-align: left;
+                        font-family: Inter;
+                        font-size: 17px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 22px;
+                    }
+
+                    .password-check-confirm {
+                        width: 22px;
+                        height: 21px;
+                        flex-shrink: 0;
+                        fill: #fff;
+                    }
+                }
+
+                .continue {
+                    width: 184px;
+                    color: var(--Gray1, #8e8e93);
+                    text-align: center;
+                    font-family: Pretendard;
+                    font-size: 17px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 22px;
+                }
+            }
+        }
+
+        .wave {
+            width: 100vw;
+            height: auto;
+        }
+    }
+}
