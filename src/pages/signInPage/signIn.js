@@ -27,11 +27,11 @@ function SignIn() {
                 if (response.data.success) {
                     navigate('/myPage');
                 } else {
-                    console.log('로그인 실패');
+                    alert('로그인 실패');
                 }
             })
             .catch(error => {
-                console.error('로그인 오류:', error);
+                alert('로그인 오류: ' + error.message);
             });
     };
 
@@ -54,6 +54,7 @@ function SignIn() {
                                     type="text"
                                     id="id"
                                     placeholder="Enter your ID"
+                                    onChange={handleInputChange}
                                 />
                             </div>
                             <div className="password-box">
@@ -61,6 +62,7 @@ function SignIn() {
                                     type="password"
                                     id="password"
                                     placeholder="Enter your password"
+                                    onChange={handleInputChange}
                                 />
                             </div>
                         </div>
