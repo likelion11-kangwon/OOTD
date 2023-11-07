@@ -32,7 +32,7 @@ function PostModify() {
      */
     const postPatch = () => {
         const postdata = {
-            userId: 123321,
+            userId: 123321, //TODO 로그인된 userId변수 넣어주기
             postImageUrl: store.getState().postReducer.postImageUrl,
             category: store.getState().postReducer.category,
             title: store.getState().postReducer.title,
