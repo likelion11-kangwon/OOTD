@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SignIn from './pages/signInPage/signIn';
 import SignUp from './pages/signUpPage/signUp';
 import Main from './pages/mainPage/main';
-import BoardList from './pages/boardPage/boardList';
+import BoardList from './pages/boardPage/BoardList';
 import BoardDetail from './pages/boardDetailPage/BoardDetail';
 import MyPage from './pages/myPage/myPage';
 import NewPost from './pages/newPostPage/newPost';
