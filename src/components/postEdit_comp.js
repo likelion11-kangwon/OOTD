@@ -1,18 +1,58 @@
+import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
 import PostCate from './postEditZip/postCate';
 import PostText from './postEditZip/postText';
+import * as actions from '../actions';
+import nullImg from '../assets/images/uploadImage.png';
 import './postEdit_comp.scss';
 
-function PostEditComp({ imgPath }) {
+function PostEditComp() {
+    const [imgPath, setImgPath] = useState();
+    const imageUrl = useSelector(state => state.postReducer.postImageUrl);
+    const dispatch = useDispatch();
+
+    const handleImage = async e => {
+        const file = e.target.files[0];
+        const err = checkImage(file);
+
+        if (err) return window.alert(err);
+        if (file) {
+            setImgPath(URL.createObjectURL(file));
+            const bodyFormData = new FormData();
+            bodyFormData.append('multipartFile', imageUrl);
+            dispatch(actions._setImage(bodyFormData));
+        }
+    };
+    const checkImage = file => {
+        let err = '';
+
+        if (!file) return 'File does not exist.';
+        if (file.type !== 'image/jpeg' && file.type !== 'image/png') {
+            err = 'Image format is incorrect.';
+        }
+
+        return err;
+    };
+
     return (
         <div className="postEdit">
             <div id="imgIn">
                 <div>
-                    <img src={imgPath} alt="게시물 이미지" />
+                    <img
+                        src={imgPath ? imgPath : nullImg}
+                        alt="게시물 이미지"
+                    />
                 </div>
                 <div>
-                    <button className="imgSelect" type="button">
-                        이미지 선택
-                    </button>
+                    <label htmlFor="imgInput">이미지 선택</label>
+                    <input
+                        id="imgInput"
+                        className="imgSelect"
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImage}
+                    />
                 </div>
             </div>
             <PostCate />

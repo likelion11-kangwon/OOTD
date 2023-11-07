@@ -9,19 +9,26 @@ import '../../styles/newPost.scss';
 
 function NewPost() {
     const navigate = useNavigate();
+    const handleUpload = () => {
+        let isAllFill = true;
+        let reducerJson = store.getState().postReducer;
+        isAllFill = reducerJson.postImageUrl ? isAllFill : false;
+        isAllFill = reducerJson.category ? isAllFill : false;
+        isAllFill = reducerJson.title ? isAllFill : false;
+        isAllFill = reducerJson.contents ? isAllFill : false;
+
+        if (isAllFill) {
+            postNewPost();
+        } else {
+            alert('모든 항목이 입력되었는지 확인해주세요.');
+        }
+    };
     /**
      * {userId: int, Category: String, postImageUrl, title: String, contents: String} -> 성공시{status: 200}
      */
     const postNewPost = () => {
-        const postdata = {
-            userId: 123321,
-            postImageUrl: store.getState().postReducer.postImageUrl,
-            category: store.getState().postReducer.category,
-            title: store.getState().postReducer.title,
-            contents: store.getState().postReducer.contents,
-        };
         axios
-            .post(`${SERVER_URL}/newPost`, postdata)
+            .post(`${SERVER_URL}/newPost`, store.getState().postReducer)
             .then(() => {
                 navigate('/main');
             })
@@ -33,12 +40,12 @@ function NewPost() {
     return (
         <div className="newPost">
             <PostUHeader headTitle="NEW POST" />
-            <PostEditComp imgPath="images/uploadImage.png" />
+            <PostEditComp />
             <div className="submit_btn_container">
                 <button
                     className="submit_btn"
                     type="button"
-                    onClick={postNewPost}
+                    onClick={handleUpload}
                 >
                     upload
                 </button>

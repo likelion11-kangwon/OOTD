@@ -16,8 +16,7 @@ function PostModify() {
         async function fetchData() {
             try {
                 let res = await axios.get(`${SERVER_URL}/post/${postId}`);
-                let img = res.data.postImageUrl;
-                store.dispatch(actions._setImage(img ? img : undefined));
+                store.dispatch(actions._setImage(null));
                 store.dispatch(actions._setCategory(res.data.category));
                 store.dispatch(actions._setTitle(res.data.title));
                 store.dispatch(actions._setContents(res.data.contents));
@@ -27,19 +26,29 @@ function PostModify() {
         }
         fetchData();
     }, []);
+    const handleSave = () => {
+        let isAllFill = true;
+        let reducerJson = store.getState().postReducer;
+        isAllFill = reducerJson.postImageUrl ? isAllFill : false;
+        isAllFill = reducerJson.category ? isAllFill : false;
+        isAllFill = reducerJson.title ? isAllFill : false;
+        isAllFill = reducerJson.contents ? isAllFill : false;
+
+        if (isAllFill) {
+            postPatch();
+        } else {
+            alert('모든 항목이 입력되었는지 확인해주세요.');
+        }
+    };
     /**
-     * {userId: int, postId: int, Category: String, postImageUrl, title: String, contents: String} ->성공/실패 코드
+     * {postId: int, Category: String, postImageUrl, title: String, contents: String} ->성공/실패 코드
      */
     const postPatch = () => {
-        const postdata = {
-            userId: 123321, //TODO 로그인된 userId변수 넣어주기
-            postImageUrl: store.getState().postReducer.postImageUrl,
-            category: store.getState().postReducer.category,
-            title: store.getState().postReducer.title,
-            contents: store.getState().postReducer.contents,
-        };
         axios
-            .patch(`${SERVER_URL}/postModify/${postId}`, postdata)
+            .patch(
+                `${SERVER_URL}/postModify/${postId}`,
+                store.getState().postReducer,
+            )
             .then(() => {
                 navigate('/mypage');
             })
@@ -51,12 +60,12 @@ function PostModify() {
     return (
         <div className="postModify">
             <PostUHeader headTitle="EDIT POST" />
-            <PostEditComp imgPath="images/uploadImage.png" />
+            <PostEditComp />
             <div className="submit_btn_container">
                 <button
                     className="submit_btn"
                     type="button"
-                    onClick={postPatch}
+                    onClick={handleSave}
                 >
                     save
                 </button>
