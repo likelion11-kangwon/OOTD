@@ -1,0 +1,553 @@
+.mypage-frame {
+    width: 100vw;
+    height: auto;
+    background: #fff;
+
+    .mypage-box {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+
+        .myprofile {
+            display: flex;
+            width: 393px;
+            padding: 24px 20px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            background: #1e1e1e;
+
+            .profile-name {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+
+                .profile-img {
+                    width: 70px;
+                    height: 70px;
+                    border-radius: 10px;
+                }
+
+                .name {
+                    display: flex;
+                    width: 222px;
+                    height: 76px;
+                    flex-direction: column;
+                    justify-content: center;
+                    color: #fff;
+                    text-align: center;
+                    font-family: Pretendard;
+                    font-size: 52px;
+                    font-style: normal;
+                    font-weight: 800;
+                    line-height: normal;
+                }
+            }
+
+            .post-likes {
+                display: flex;
+                align-items: flex-start;
+                gap: 16px;
+                align-self: stretch;
+
+                .new-post {
+                    display: flex;
+                    padding: 4px 16px;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 16px;
+                    flex: 1 0 0;
+                    border-radius: 8px;
+                    background: #474747;
+
+                    .post-icon {
+                        display: flex;
+                        width: 24px;
+                        height: 24px;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+
+                        .pencil-img {
+                            width: 20px;
+                            height: 20px;
+                            flex-shrink: 0;
+                        }
+                    }
+
+                    .new-post-text {
+                        color: #fff;
+                        text-align: center;
+                        font-family: Pretendard;
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
+                    }
+                }
+
+                .my-likes {
+                    display: flex;
+                    padding: 4px 16px;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 16px;
+                    flex: 1 0 0;
+                    border-radius: 8px;
+                    background: #474747;
+
+                    .likes-icon {
+                        display: flex;
+                        width: 24px;
+                        height: 24px;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+
+                        .heart-img {
+                            width: 20px;
+                            height: 20px;
+                            flex-shrink: 0;
+                            fill: #fff;
+                        }
+                    }
+
+                    .my-likes-text {
+                        color: #fff;
+                        text-align: center;
+                        font-family: Pretendard;
+                        font-size: 16px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
+                    }
+                }
+            }
+        }
+
+        .mypost-box {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+
+            .mypost-count {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+
+                .mypost-count-text {
+                    color: var(--Black, #1c1c1e);
+                    text-align: center;
+                    font-family: Pretendard;
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                }
+
+                .mypost-count-number {
+                    color: var(--Black, #1c1c1e);
+                    text-align: center;
+                    font-family: Pretendard;
+                    font-size: 40px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: normal;
+                }
+            }
+
+            .picture-box {
+                display: flex;
+                width: 320px;
+                justify-content: center;
+                align-items: flex-start;
+                align-content: flex-start;
+                gap: 20px 16px;
+                flex-wrap: wrap;
+
+                .picture-one {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 12px;
+
+                    .picture-one-image {
+                        display: flex;
+                        width: 152px;
+                        height: 152px;
+                        justify-content: center;
+                        align-items: center;
+
+                        .picture1-img {
+                            width: 152px;
+                            height: 152px;
+                            flex-shrink: 0;
+                        }
+                    }
+
+                    .picture-one-edit-del-box {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-end;
+                        gap: 10px;
+                        align-self: stretch;
+
+                        .picture-one-edit-del {
+                            display: flex;
+                            align-items: flex-start;
+                            gap: 12px;
+
+                            .picture-one-edit-box {
+                                display: flex;
+                                padding: 2px 8px;
+                                justify-content: center;
+                                align-items: center;
+                                gap: 10px;
+                                border-radius: 4px;
+                                background: #d4d4d4;
+
+                                .picture-one-edit {
+                                    color: #555;
+                                    text-align: center;
+                                    font-family: Pretendard;
+                                    font-size: 16px;
+                                    font-style: normal;
+                                    font-weight: 400;
+                                    line-height: normal;
+                                }
+                            }
+
+                            .picture-one-del-box {
+                                display: flex;
+                                padding: 2px 8px;
+                                justify-content: center;
+                                align-items: center;
+                                gap: 10px;
+                                border-radius: 4px;
+                                background: #d4d4d4;
+
+                                .picture-one-del {
+                                    color: #555;
+                                    text-align: center;
+                                    font-family: Pretendard;
+                                    font-size: 16px;
+                                    font-style: normal;
+                                    font-weight: 400;
+                                    line-height: normal;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .picture-two {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 12px;
+
+                    .picture-two-image {
+                        display: flex;
+                        width: 152px;
+                        height: 152px;
+                        justify-content: center;
+                        align-items: center;
+
+                        .picture2-img {
+                            width: 152px;
+                            height: 152px;
+                            flex-shrink: 0;
+                        }
+                    }
+
+                    .picture-two-edit-del-box {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-end;
+                        gap: 10px;
+                        align-self: stretch;
+
+                        .picture-two-edit-del {
+                            display: flex;
+                            align-items: flex-start;
+                            gap: 12px;
+
+                            .picture-two-edit-box {
+                                display: flex;
+                                padding: 2px 8px;
+                                justify-content: center;
+                                align-items: center;
+                                gap: 10px;
+                                border-radius: 4px;
+                                background: #d4d4d4;
+
+                                .picture-two-edit {
+                                    color: #555;
+                                    text-align: center;
+                                    font-family: Pretendard;
+                                    font-size: 16px;
+                                    font-style: normal;
+                                    font-weight: 400;
+                                    line-height: normal;
+                                }
+                            }
+
+                            .picture-two-del-box {
+                                display: flex;
+                                padding: 2px 8px;
+                                justify-content: center;
+                                align-items: center;
+                                gap: 10px;
+                                border-radius: 4px;
+                                background: #d4d4d4;
+
+                                .picture-two-del {
+                                    color: #555;
+                                    text-align: center;
+                                    font-family: Pretendard;
+                                    font-size: 16px;
+                                    font-style: normal;
+                                    font-weight: 400;
+                                    line-height: normal;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .picture-three {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 12px;
+
+                    .picture-three-image {
+                        display: flex;
+                        width: 152px;
+                        height: 152px;
+                        justify-content: center;
+                        align-items: center;
+
+                        .picture3-img {
+                            width: 152px;
+                            height: 152px;
+                            flex-shrink: 0;
+                        }
+                    }
+
+                    .picture-three-edit-del-box {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-end;
+                        gap: 10px;
+                        align-self: stretch;
+
+                        .picture-three-edit-del {
+                            display: flex;
+                            align-items: flex-start;
+                            gap: 12px;
+
+                            .picture-three-edit-box {
+                                display: flex;
+                                padding: 2px 8px;
+                                justify-content: center;
+                                align-items: center;
+                                gap: 10px;
+                                border-radius: 4px;
+                                background: #d4d4d4;
+
+                                .picture-three-edit {
+                                    color: #555;
+                                    text-align: center;
+                                    font-family: Pretendard;
+                                    font-size: 16px;
+                                    font-style: normal;
+                                    font-weight: 400;
+                                    line-height: normal;
+                                }
+                            }
+
+                            .picture-three-del-box {
+                                display: flex;
+                                padding: 2px 8px;
+                                justify-content: center;
+                                align-items: center;
+                                gap: 10px;
+                                border-radius: 4px;
+                                background: #d4d4d4;
+
+                                .picture-three-del {
+                                    color: #555;
+                                    text-align: center;
+                                    font-family: Pretendard;
+                                    font-size: 16px;
+                                    font-style: normal;
+                                    font-weight: 400;
+                                    line-height: normal;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .picture-four {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 12px;
+
+                    .picture-four-image {
+                        display: flex;
+                        width: 152px;
+                        height: 152px;
+                        justify-content: center;
+                        align-items: center;
+
+                        .picture4-img {
+                            width: 152px;
+                            height: 152px;
+                            flex-shrink: 0;
+                        }
+                    }
+
+                    .picture-four-edit-del-box {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-end;
+                        gap: 10px;
+                        align-self: stretch;
+
+                        .picture-four-edit-del {
+                            display: flex;
+                            align-items: flex-start;
+                            gap: 12px;
+
+                            .picture-four-edit-box {
+                                display: flex;
+                                padding: 2px 8px;
+                                justify-content: center;
+                                align-items: center;
+                                gap: 10px;
+                                border-radius: 4px;
+                                background: #d4d4d4;
+
+                                .picture-four-edit {
+                                    color: #555;
+                                    text-align: center;
+                                    font-family: Pretendard;
+                                    font-size: 16px;
+                                    font-style: normal;
+                                    font-weight: 400;
+                                    line-height: normal;
+                                }
+                            }
+
+                            .picture-four-del-box {
+                                display: flex;
+                                padding: 2px 8px;
+                                justify-content: center;
+                                align-items: center;
+                                gap: 10px;
+                                border-radius: 4px;
+                                background: #d4d4d4;
+
+                                .picture-four-del {
+                                    color: #555;
+                                    text-align: center;
+                                    font-family: Pretendard;
+                                    font-size: 16px;
+                                    font-style: normal;
+                                    font-weight: 400;
+                                    line-height: normal;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .mypage-number-box {
+                display: flex;
+                padding: 8px 10px;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                align-self: stretch;
+
+                .mypage-number {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 4px;
+
+                    .mypage-number-one {
+                        display: flex;
+                        width: 16px;
+                        height: 19px;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+
+                        .mypage-number-one-text {
+                            width: 16px;
+                            color: var(--MainColor, #a431b9);
+                            text-align: center;
+                            font-family: Pretendard;
+                            font-size: 16px;
+                            font-style: normal;
+                            font-weight: 700;
+                            line-height: normal;
+                        }
+                    }
+
+                    .mypage-number-two {
+                        display: flex;
+                        width: 16px;
+                        height: 19px;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+
+                        .mypage-number-two-text {
+                            width: 16px;
+                            color: var(--Black, #1c1c1e);
+                            text-align: center;
+                            font-family: Pretendard;
+                            font-size: 16px;
+                            font-style: normal;
+                            font-weight: 200;
+                            line-height: normal;
+                        }
+                    }
+
+                    .mypage-number-three {
+                        display: flex;
+                        width: 16px;
+                        height: 19px;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+
+                        .mypage-number-three-text {
+                            width: 16px;
+                            color: var(--Black, #1c1c1e);
+                            text-align: center;
+                            font-family: Pretendard;
+                            font-size: 16px;
+                            font-style: normal;
+                            font-weight: 200;
+                            line-height: normal;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
