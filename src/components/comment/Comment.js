@@ -15,9 +15,11 @@ function Comment() {
                 contents,
             })
             .then(response => {
-                const newComment = response.data.comments;
+                // console.log(response.data);
+                const newComment = response.data.contents;
+                setContents(newComment);
                 setComment([...comment, newComment]);
-                setContents('');
+                // setContents('');
             })
             .catch(error => {
                 console.error('Error adding comment:', error);
@@ -28,6 +30,7 @@ function Comment() {
         axios
             .get(`http://localhost:8090/posts/${postId}`)
             .then(response => {
+                // console.log(response.data.comments);
                 setComment(response.data.comments);
                 setUsername(response.data.username);
             })
@@ -38,11 +41,6 @@ function Comment() {
     return (
         <div className="App">
             <h1>Comments for Post {postId}</h1>
-            {/*<CommentList comments={comment} />*/}
-            {/*<CommentForm*/}
-            {/*    postId={postId}*/}
-            {/*    onCommentSubmit={handleCommentSubmit}*/}
-            {/*/>*/}
             <textarea
                 placeholder="Add a comment"
                 value={contents}
@@ -51,13 +49,13 @@ function Comment() {
             <button onClick={handleCommentSubmit}>Add Comment</button>
             <div className="comment-list">
                 {comment &&
-                    comment.map((comment, id) => (
-                        <div key={id}>
+                    comment.map((comment, id) => {
+                        return (
                             <p>
                                 {comment.username}:{comment.contents}
                             </p>
-                        </div>
-                    ))}
+                        );
+                    })}
             </div>
         </div>
     );
