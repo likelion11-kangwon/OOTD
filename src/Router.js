@@ -18,7 +18,7 @@ const Router = () => {
                 <Route path="/board" element={<Board />} />
                 <Route path="/myPage" element={<MyPage />} />
                 <Route path="/newPost" element={<NewPost />} />
-                <Route path="/postModify" element={<PostModify />} />
+                <Route path="/postModify/:postId" element={<PostModify />} />
             </Routes>
         </BrowserRouter>
     );
