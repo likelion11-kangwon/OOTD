@@ -1,6 +1,10 @@
-import { legacy_createStore as createStore, applyMiddleware } from 'redux';
-import { createLogger } from 'redux-logger';
+import { configureStore } from '@reduxjs/toolkit';
 import reducers from './reducers';
- 
-const logger = createLogger();
-export default createStore(reducers, applyMiddleware(logger));
+import logger from 'redux-logger';
+
+const store = configureStore({
+    reducer: reducers,
+    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(logger),
+    devTools: true, //TODO 배포 시 false로 설정해두기
+});
+export default store;

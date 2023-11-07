@@ -2,13 +2,15 @@
 
 body{
     font-family: Pretendard;
+    color: black;
     margin: 0px;
+    background-color: white;
 }
 button{
     cursor: pointer;
 }
 
-.newPost .submit_btn_container{
+.submit_btn_container{
     padding: 1rem;
     text-align: center;
 

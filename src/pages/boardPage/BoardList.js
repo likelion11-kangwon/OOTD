@@ -75,7 +75,6 @@ const BoardList = () => {
                 nextPageText={'>'}
                 onChange={handlePageChange}
             />
-
         </div>
     );
 };
