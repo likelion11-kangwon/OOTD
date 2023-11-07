@@ -11,6 +11,70 @@
       "id": 1,
       "body": "some comment",
       "postId": 1
+    },
+    {
+      "id": 2,
+      "body": ""
+    },
+    {
+      "id": 3,
+      "body": ""
+    },
+    {
+      "id": 4,
+      "body": "ㅇㄹㅇㄹ"
+    },
+    {
+      "id": 5,
+      "body": "댓글 "
+    },
+    {
+      "id": 6,
+      "body": "ㅇㄹㅇ"
+    },
+    {
+      "id": 7,
+      "body": "ㅇㄹㅇㄹ"
+    },
+    {
+      "id": 8,
+      "body": "ㄴㅇㄴㅇ"
+    },
+    {
+      "id": 9,
+      "content": "ㅇㄹㅇ"
+    },
+    {
+      "id": 10,
+      "content": "ㅇ"
+    },
+    {
+      "id": 11,
+      "content": "ㅇㄹㅇ"
+    },
+    {
+      "id": 12,
+      "content": "ㅇㄹㅇ"
+    },
+    {
+      "id": 13,
+      "content": "ㅇㄹ"
+    },
+    {
+      "id": 14,
+      "content": "ㅇㄹ"
+    },
+    {
+      "id": 15,
+      "content": "댓글"
+    },
+    {
+      "id": 16,
+      "content": "ㅇㄹ"
+    },
+    {
+      "id": 17,
+      "content": "ㄴㅇ"
     }
   ],
   "profile": {

@@ -1,131 +1,87 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-// import Comment from '../../components/comment/Comment';
+import { useParams, useNavigate } from 'react-router-dom';
+import Header from '../../components/header/postDetailHeader';
+import CommentWrite from '../../components/comment/CommentWrite';
+import CommentList from '../../components/comment/CommentList';
 
 //상세페이지
 const BoardDetail = () => {
-    const params = useParams().id;
-    const navigate = useNavigate();
-
+    const seq = useParams();
     // state
-    const [detailBoardData, setDetailBoardData] = useState([]);
-    const [boardCommentData, setBoardCommentData] = useState([]);
+    const [postDetail, setPostDetail] = useState([]);
+    const [postId, setPostId] = useState('');
+    const [author, setAuthor] = useState('');
+    const [title, setTitle] = useState('');
+    const [content, setconTent] = useState('');
 
-    // const [CommentValue, setCommentValue] = useState("");
-    const onCommentChange = (e) => {
-        setCommentValue(e.currentTarget.value);
+    const getPostDetail = async () => {
+        await axios
+            .get(`http://localhost:8090/posts`, { params: seq })
+            // .get(`http://localhost:3000/board/${params}`)
+            // .get(`http://localhost:8090/posts/${params}`)
+            .then(resp => {
+                // console.log(seq);
+                console.log('getPostDetail() success:)');
+                console.log(resp.data);
+                setPostDetail(resp.data);
+                setPostId(resp.data[0].id);
+                setTitle(resp.data[0].title);
+                setAuthor(resp.data[0].author);
+            })
+            .catch(err => {
+                console.log('getPostDetail() error :<');
+                console.log('err');
+            });
     };
-
-    const onCommentSubmit = () => {
-        if (
-            CommentValue === "" ||
-            CommentValue === null ||
-            CommentValue === undefined
-        )
-        {
-            alert("댓글 입력");
-            return false;
-        }
-        const comment = {
-            id: 0,
-            content: CommentValue,
-        }
-    };
-
-    // const sendComment = (e) => {
-    //     e.preventDefault();
-    //     console.log(comment)
-    //     if(comment === ""){
-    //         alert("write your commment")
-    //     } else{
-    //         const userData ={
-    //             id: sessionStorage.getItem("id"),
-    //             comment: comment,
-    //             title: location.state.props.title
-    //         }
-    //         axios.post("http://localhost:8080/api/user/comment", userData) //user/comment에서 가져옴
-    //             // .then((response) => {
-    //             //     if( response.status === 200 )
-    //             //         window.location.reload()
-    //             // })
-    //     }
+    // const deletePosts = async () => {
+    //
+    //     await axios.delete(`http://localhost:8090/posts/${params}`)
+    //         .then((resp) => {
+    //             console.log("deletePosts() success :D");
+    //             console.log(resp.data);
+    //
+    //             if (resp.data.deletedRecordCount === 1) {
+    //                 alert("게시글을 성공적으로 삭제했습니다 :D");
+    //                 navigate("/board");
+    //             }
+    //
+    //         }).catch((err) => {
+    //             console.log("[BbsDetail.js] deleteBbs() error :<");
+    //             console.log(err);
+    //         });
+    //
     // }
-
     useEffect(() => {
-        axios
-            .get(`http://localhost:8080/post/${params}`) //params: postId로 게시글 가져옴
-            .then(response => {
-                setDetailBoardData(response.data);
-            })
-
-            .catch(function (error) {
-                console.log(error);
-            });
+        getPostDetail();
     }, []);
-
-    useEffect(() => {
-        axios
-            .get(`http://localhost:8080/post/comment/${location.state.props.title}`)
-            .then(response => {
-                response.json()
-            })
-            .then(data => {
-                setBoardCommentData(data)
-            });
-    }, []);
-
 
     return (
-        <div className="board-detail">
-            <div className="title">{detailBoardData.title}</div>
-
-            <div className="board-wrapper">
-                <div className="board-header">
-                    <p>작성자: {detailBoardData.userId}</p>
-                </div>
-
-                <div className="board-content">
-                    <p>{detailBoardData.content}</p>
-                    <p>{detailBoardData.postImageUrl}</p>
-                </div>
+        <div>
+            <div className="header">
+                <Header />
             </div>
+            <div className="board-detail">
+                <table className="table table-striped">
+                    <tbody>
+                        <tr>
+                            <th className="col-3">작성자</th>
+                            <td>
+                                <span>{author}</span>
+                                {/*<p>{params.id}</p>*/}
+                            </td>
+                        </tr>
 
-            <div className='comment-box'>
-                <h4 className='comment-box-header'>
-                    Comment box
-                </h4>
-                <div className='comment-box-body'>
-                    {/*<Table>*/}
-                    {/*    <thead>*/}
-                    {/*    <tr>*/}
-                    {/*        <th>작성자</th>*/}
-                    {/*        <th>댓글</th>*/}
-                    {/*    </tr>*/}
-                    {/*    </thead>*/}
-                    {/*    <tbody>*/}
-                    {/*    { comments ? comments.map(co => {*/}
-                    {/*        return( <Comment*/}
-                    {/*            id = {co.id}*/}
-                    {/*            comment={c.comments}>*/}
-                    {/*        </Comment> )*/}
-                    {/*    })}*/}
-                    {/*    </tbody>*/}
-                    {/*</Table>*/}
-                    <div>
-                        <div className='comment'>
-                            {props.handleComment}
-                        </div>
-                        {/*<Comment*/}
-                        {/*    comment = {CommentValue}*/}
-                        {/*    handleCommitSubmit={onCommentSubmit} />*/}
-                    </div>
-                    <h3>comments</h3>
-                    <input type="text" value={comment} onChange={handleComment}> </input>
-                    <Button onClick = {sendComment}>댓글 submit</Button>
-                </div>
-
+                        <tr>
+                            <th>제목</th>
+                            <td>
+                                <span>{title}</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <CommentList seq={seq} />
+                <CommentWrite seq={seq} />
             </div>
         </div>
     );
