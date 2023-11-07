@@ -48,6 +48,7 @@ const BoardList_dev = () => {
         setPage(page);
         getBoardList(searchVal, page);
     };
+
     return (
         <div>
             <div className="board-header">

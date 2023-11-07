@@ -4,7 +4,18 @@
       "id": 1,
       "title": "json-server1",
       "username": "typicode1",
-      "content": "내용1"
+      "content": "내용1",
+      "imageUrl": "https://mblogthumb-phinf.pstatic.net/MjAyMTA3MDZfNiAg/MDAxNjI1NTgwMDU4MTQz.GtBb43jJQsU0RJTYdvLgZsd-nE0nFCDUDMWJUQauObYg.gz9W3x0-Oav_r-JYumNi0_zrHvsetzYOza7NYwj8E6Eg.JPEG.dkfk7725/Internet_20210706_230040_3.jpeg?type=w800",
+      "comments": [
+        {
+          "username": "user1",
+          "contents": "내용"
+        },
+        {
+          "username": "user2",
+          "contents": "내용2"
+        }
+      ]
     },
     {
       "id": 2,
@@ -23,47 +34,6 @@
       "title": "json-server4",
       "username": "typicode4",
       "content": "내용4"
-    },
-    {
-      "id": 5,
-      "title": "json-server4",
-      "username": "typicode4",
-      "content": "내용4"
-    },
-    {
-      "id": 6,
-      "title": "json-server4",
-      "username": "typicode4",
-      "content": "내용4"
-    },
-    {
-      "id": 7,
-      "title": "json-server4",
-      "username": "typicode4",
-      "content": "내용4"
-    },
-    {
-      "id": 8,
-      "title": "json-server4",
-      "username": "typicode4",
-      "content": "내용4"
-    },
-    {
-      "id": 9,
-      "title": "json-server4",
-      "username": "typicode4",
-      "content": "내용4"
-    }
-
-  ],
-  "comments": [
-    {
-      "username": "user1",
-      "contents": "내용"
-    },
-    {
-      "username": "user2",
-      "contents": "내용2"
     }
   ]
 }

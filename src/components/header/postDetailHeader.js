@@ -11,6 +11,7 @@ const PostDetailHeader = () => {
             <button onClick={navigateToBoard} className="backBtn">
                 &lt;Back
             </button>
+            <h1>POST</h1>
         </div>
     );
 };

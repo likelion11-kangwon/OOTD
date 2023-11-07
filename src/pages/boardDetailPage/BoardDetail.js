@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+
 import Header from '../../components/header/postDetailHeader';
 import Comment from '../../components/comment/Comment';
-import Heart from '../../components/likes/HeartButton';
+import heartImg from '../../assets/images/heart.svg';
+import profileImg from '../../assets/images/profile.png';
+import '../../styles/boardDetail.scss';
 
 //상세페이지
 function BoardDetail() {
     const [username, setUsername] = useState('');
     const [title, setTitle] = useState('');
     const [contents, setContents] = useState('');
+    const [imageUrl, setImageUrl] = useState();
     const postId = useParams().postId;
     const getPostDetail = async () => {
         await axios
@@ -20,6 +24,7 @@ function BoardDetail() {
                 setTitle(resp.data.title);
                 setUsername(resp.data.username);
                 setContents(resp.data.content);
+                setImageUrl(resp.data.imageUrl);
             })
             .catch(err => {
                 console.log('getPostDetail() error :<');
@@ -32,36 +37,28 @@ function BoardDetail() {
     }, []);
 
     return (
-        <div>
+        <div className="boardDetail">
             <div className="header">
                 <Header />
             </div>
-            <div className="board-detail">
-                <table className="table table-striped">
-                    <tbody>
-                        <tr>
-                            <th className="col-3">작성자</th>
-                            <td>
-                                <span>{username}</span>
-                                {/*<p>{params.id}</p>*/}
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th>제목</th>
-                            <td>
-                                <span>{title}</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>내용</th>
-                            <td>
-                                <span>{contents}</span>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <Heart />
+            <div className="boardDetail">
+                <div className="postCard">
+                    <div className="postCardH">
+                        <img src={profileImg} alt="profile image" />
+                        <div>{username}</div>
+                    </div>
+                    <img
+                        className="postCardImg"
+                        src={imageUrl}
+                        alt="post image"
+                    />
+                    <div className="postCardT">
+                        <div>{title}</div>
+                        <img src={heartImg} alt="like" />
+                        {/* TODO 하트 아이콘 조건부랜더링 및 서버에서 get*/}
+                    </div>
+                    <div>{contents}</div>
+                </div>
                 <Comment />
             </div>
         </div>
