@@ -75,13 +75,13 @@
                         border-radius: 12px;
                         border: 1px solid #b2aeb1;
 
-                        .id {
+                        input {
+                            background: none;
+                            border: none;
                             display: flex;
-                            width: 121px;
-                            height: 19px;
                             flex-direction: column;
                             justify-content: center;
-                            color: #fff;
+                            color: white;
                             text-align: center;
                             font-family: Pretendard;
                             font-size: 17px;
@@ -102,13 +102,13 @@
                         border-radius: 12px;
                         border: 1px solid #b2aeb1;
 
-                        .password {
+                        input {
+                            background: none;
+                            border: none;
                             display: flex;
-                            width: 121px;
-                            height: 19px;
                             flex-direction: column;
                             justify-content: center;
-                            color: #fff;
+                            color: white;
                             text-align: center;
                             font-family: Pretendard;
                             font-size: 17px;

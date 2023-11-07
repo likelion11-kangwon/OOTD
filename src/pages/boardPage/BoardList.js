@@ -71,8 +71,8 @@ const BoardList = () => {
                 itemsCountPerPage={postPerPage}
                 totalItemsCount={boardList.length}
                 pageRangeDisplayed={6}
-                prevPageText={'<'}
-                nextPageText={'>'}
+                prevPageText="<"
+                nextPageText=">"
                 onChange={handlePageChange}
             />
         </div>

@@ -64,9 +64,11 @@
                     border: 1px solid #fff;
                     background: #000;
 
-                    .username {
+                    input {
+                        background: none;
+                        border: none;
                         color: #fff;
-                        text-align: center;
+                        text-align: left;
                         font-family: Inter;
                         font-size: 17px;
                         font-style: normal;
@@ -91,9 +93,11 @@
                     border: 1px solid #fff;
                     background: #000;
 
-                    .id {
+                    input {
+                        background: none;
+                        border: none;
                         color: #fff;
-                        text-align: center;
+                        text-align: left;
                         font-family: Inter;
                         font-size: 17px;
                         font-style: normal;
@@ -119,9 +123,11 @@
                     border: 1px solid #fff;
                     background: #000;
 
-                    .password {
+                    input {
+                        background: none;
+                        border: none;
                         color: #fff;
-                        text-align: center;
+                        text-align: left;
                         font-family: Inter;
                         font-size: 17px;
                         font-style: normal;
@@ -146,9 +152,11 @@
                     border: 1px solid #fff;
                     background: #000;
 
-                    .password-check {
+                    input {
+                        background: none;
+                        border: none;
                         color: #fff;
-                        text-align: center;
+                        text-align: left;
                         font-family: Inter;
                         font-size: 17px;
                         font-style: normal;
