@@ -3,8 +3,7 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '../../components/header/postDetailHeader';
 import Comment from '../../components/comment/Comment';
-// import CommentList from '../../components/comment/CommentList';
-// import CommentWrite from '../../components/comment/CommentWrite';
+import Heart from '../../components/likes/HeartButton';
 
 //상세페이지
 function BoardDetail() {
@@ -62,6 +61,7 @@ function BoardDetail() {
                         </tr>
                     </tbody>
                 </table>
+                <Heart />
                 <Comment />
             </div>
         </div>

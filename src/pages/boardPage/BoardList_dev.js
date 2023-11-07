@@ -5,6 +5,7 @@ import { BiSearchAlt } from 'react-icons/bi';
 import Card from '../../components/board/Card';
 import Header from '../../components/header/BoardHeader';
 import '../../styles/board.scss';
+import postData from '../myPage/postData';
 
 const BoardList_dev = () => {
     const [boardList, setBoardList] = useState([]);
@@ -12,8 +13,11 @@ const BoardList_dev = () => {
     //paging
     const [page, setPage] = useState(1);
     const [totalCnt, setTotalCnt] = useState(0);
+    const [currentPage, setCurrentPage] = useState(0);
 
     let navigate = useNavigate();
+    const totalPages = postData.length;
+    const pages = Array.from({ length: totalPages }, (_, i) => i);
 
     const getBoardList = async (search, page) => {
         await axios
@@ -34,6 +38,7 @@ const BoardList_dev = () => {
         getBoardList('', 1);
     }, []);
 
+    //검색
     const changeSearch = e => {
         setSearchVal(e.target.value);
     };
@@ -47,6 +52,18 @@ const BoardList_dev = () => {
         getBoardList(searchVal, page);
     };
 
+    //페이지네이션
+    const currentPosts =
+        pages[currentPage] !== undefined
+            ? postData[pages[currentPage]].filter(post => post !== null)
+            : [];
+
+    const handlePageChange = page => {
+        if (page >= 0 && page < totalPages) {
+            setCurrentPage(page);
+        }
+    };
+
     return (
         <div>
             <div className="board-header">
@@ -58,19 +75,17 @@ const BoardList_dev = () => {
                 </div>
                 {/*검색*/}
                 <div className="search-box">
-                    <div className='"search-bar-section'>
-                        <form className="search">
-                            <input
-                                type="text"
-                                placeholder="search posts"
-                                value={searchVal}
-                                onChange={changeSearch}
-                            />
-                            <button type="button" onClick={search}>
-                                <BiSearchAlt />
-                            </button>
-                        </form>
-                    </div>
+                    <form className="search">
+                        <input
+                            type="text"
+                            placeholder="search posts"
+                            value={searchVal}
+                            onChange={changeSearch}
+                        />
+                        <button type="button" onClick={search}>
+                            <BiSearchAlt />
+                        </button>
+                    </form>
                 </div>
             </div>
             <div className="board-container">
@@ -88,6 +103,23 @@ const BoardList_dev = () => {
                     })}
                 </div>
             </div>
+            {/*<div className="mypage-number-container">*/}
+            {/*    <div className="mypage-number-box">*/}
+            {/*        {pages.map((page, index) => (*/}
+            {/*            <div*/}
+            {/*                className={`mypage-number ${*/}
+            {/*                    currentPage === page ? 'active' : ''*/}
+            {/*                }`}*/}
+            {/*                key={page}*/}
+            {/*                onClick={() => handlePageChange(page)}*/}
+            {/*            >*/}
+            {/*                <div className="mypage-number-text">*/}
+            {/*                    {index + 1}*/}
+            {/*                </div>*/}
+            {/*            </div>*/}
+            {/*        ))}*/}
+            {/*    </div>*/}
+            {/*</div>*/}
         </div>
     );
 };
