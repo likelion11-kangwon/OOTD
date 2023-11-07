@@ -1,21 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-import store from '../../store';
 import * as actions from '../../actions';
 
 /**
  * postEdit_comp - title, contents
  */
 export default function PostText() {
-    const [title, setTitle] = useState(undefined);
-    const [contents, setContents] = useState(undefined);
-    useEffect(() => {
-        setTitle(store.getState().postReducer.title);
-        setContents(store.getState().postReducer.contents);
-    }, [
-        store.getState().postReducer.title,
-        store.getState().postReducer.contents,
-    ]);
+    const post = useSelector(state => state.postReducer);
+    const dispatch = useDispatch();
 
     return (
         <div>
@@ -26,12 +18,9 @@ export default function PostText() {
                         id="title"
                         type="text"
                         placeholder="제목을 입력하세요"
-                        value={title}
+                        value={post.title}
                         onChange={event => {
-                            store.dispatch(
-                                actions._setTitle(event.target.value),
-                            );
-                            setTitle(event.target.value);
+                            dispatch(actions._setTitle(event.target.value));
                         }}
                     />
                 </div>
@@ -44,12 +33,9 @@ export default function PostText() {
                         type="text"
                         rows={5}
                         placeholder="문구를 입력하세요"
-                        value={contents}
+                        value={post.contents}
                         onChange={event => {
-                            store.dispatch(
-                                actions._setContents(event.target.value),
-                            );
-                            setContents(event.target.value);
+                            dispatch(actions._setContents(event.target.value));
                         }}
                     />
                 </div>
