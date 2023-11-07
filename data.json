@@ -2,49 +2,43 @@
   "posts": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "title": "json-server1",
+      "author": "typicode1",
+      "comments": [
+        "안녕하세요",
+        "안녕하세요2"
+      ]
     },
     {
       "id": 2,
-      "title": "json-server",
-      "author": "typicode"
+      "title": "json-server2",
+      "author": "typicode2",
+      "comments": [
+        "안녕하세요3",
+        "안녕하세요4"
+      ]
     },
     {
       "id": 3,
-      "title": "json-server",
-      "author": "typicode"
+      "title": "json-server3",
+      "author": "typicode3",
+      "comments": [
+        "안녕하세요4",
+        "안녕하세요5"
+      ]
     },
     {
       "id": 4,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "content": "some comment",
-      "postId": 1
-    },
-    {
-      "id": 2,
-      "content": ""
-    },
-    {
-      "id": 3,
-      "content": ""
-    },
-    {
-      "id": 4,
-      "content": "ㅇㄹㅇㄹ"
+      "title": "json-server4",
+      "author": "typicod4e"
     },
     {
       "id": 5,
-      "content": "댓글 "
+      "content": "ㄴㅇㄴ"
+    },
+    {
+      "id": 6,
+      "content": "ㅇㄹ"
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }

@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import BoardPage from '../boardPage/BoardList';
+import BoardPage from '../boardPage/BoardList_dev';
 import React from 'react';
 
 function Main() {

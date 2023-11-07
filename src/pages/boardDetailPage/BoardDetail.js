@@ -6,22 +6,20 @@ import CommentWrite from '../../components/comment/CommentWrite';
 import CommentList from '../../components/comment/CommentList';
 
 //상세페이지
-const BoardDetail = () => {
-    const seq = useParams();
+function BoardDetail() {
     // state
     const [postDetail, setPostDetail] = useState([]);
     const [postId, setPostId] = useState('');
     const [author, setAuthor] = useState('');
     const [title, setTitle] = useState('');
-    const [content, setconTent] = useState('');
+    // const [content, setConTent] = useState('');
 
     const getPostDetail = async () => {
         await axios
-            .get(`http://localhost:8090/posts`, { params: seq })
-            // .get(`http://localhost:3000/board/${params}`)
-            // .get(`http://localhost:8090/posts/${params}`)
+            .get(`http://localhost:8090/posts`)
             .then(resp => {
-                // console.log(seq);
+                // console.log(params);
+                // console.log(postId);
                 console.log('getPostDetail() success:)');
                 console.log(resp.data);
                 setPostDetail(resp.data);
@@ -61,13 +59,19 @@ const BoardDetail = () => {
                                 <span>{title}</span>
                             </td>
                         </tr>
+                        {/*<tr>*/}
+                        {/*    <th>내용</th>*/}
+                        {/*    <td>*/}
+                        {/*        /!*<span>{comment}</span>*!/*/}
+                        {/*    </td>*/}
+                        {/*</tr>*/}
                     </tbody>
                 </table>
-                <CommentList seq={seq} />
-                <CommentWrite seq={seq} />
+                <CommentList postId={postId} />
+                <CommentWrite postId={postId} />
             </div>
         </div>
     );
-};
+}
 
 export default BoardDetail;

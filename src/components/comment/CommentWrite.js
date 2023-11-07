@@ -1,15 +1,11 @@
 import axios from 'axios';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // import { HttpHeadersContext } from "../context/HttpHeadersProvider';
 
 function CommentWrite(props) {
-    // const { headers, setHeaders } = useContext(HttpHeadersContext);
     const id = localStorage.getItem('id');
-    // const postId = localStorage.getItem('postId');
-    const seq = props.seq;
-
     const navigate = useNavigate();
     const [content, setContent] = useState('');
 
@@ -21,18 +17,12 @@ function CommentWrite(props) {
         const req = {
             id: id,
             content: content,
-            // postId: seq,
         };
         await axios
-            .post(`http://localhost:8090/comments`, req)
+            .post(`http://localhost:8090/posts`, req)
             .then(resp => {
                 console.log('createComment() success :D');
                 console.log(resp.data);
-
-                if (resp.data.seq != null) {
-                    alert('댓글을 성공적으로 등록했습니다 :D');
-                    navigate(0);
-                }
             })
             .catch(err => {
                 console.log('createComment() error :<');
@@ -40,6 +30,7 @@ function CommentWrite(props) {
             });
         window.location.reload();
     };
+
     return (
         <>
             {/* 상단 영역 (프로필 이미지, 댓글 작성자) */}

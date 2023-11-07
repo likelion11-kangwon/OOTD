@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Pagination from 'react-js-pagination';
+import Card from '../../components/Card';
+import Header from '../../components/header/BoardHeader';
 
 const BoardList_dev = () => {
     const [boardList, setBoardList] = useState([]);
@@ -47,6 +48,9 @@ const BoardList_dev = () => {
 
     return (
         <div>
+            <div className="board-header">
+                <Header />
+            </div>
             {/*검색*/}
             <div className="search-box">
                 <div className='"search-bar-section'>
@@ -64,37 +68,21 @@ const BoardList_dev = () => {
                     </button>
                 </div>
             </div>
-            <table>
-                <tbody>
-                    {boardList.map((board, id) => {
-                        console.log(board);
+            <div className="board-container">
+                <div className="row">
+                    {boardList.map((boardList, postId) => {
                         return (
-                            <tr key={id}>
-                                <td className="title">
-                                    <Link to={`/board/${board.id}`}>
-                                        {board.title}
-                                    </Link>
-                                </td>
-                                <td className="author">{board.author}</td>
-                                <td className="postImage">
-                                    <Link to={`/board/${board.id}`}>
-                                        {board.postImageUrl}
-                                    </Link>
-                                </td>
-                            </tr>
+                            <Link to={`/board/${boardList.id}`}>
+                                <Card
+                                    id={boardList.id}
+                                    title={boardList.title}
+                                    author={boardList.author}
+                                />
+                            </Link>
                         );
                     })}
-                </tbody>
-            </table>
-            <Pagination
-                className="pagination"
-                activePage={page}
-                itemsCountPerPage={4}
-                totalItemsCount={totalCnt}
-                prevPageText={'‹'}
-                nextPageText={'›'}
-                onChange={changePage}
-            />
+                </div>
+            </div>
         </div>
     );
 };

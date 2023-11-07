@@ -1,22 +1,18 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import Pagination from 'react-js-pagination';
 
-const CommentList = props => {
-    const seq = props.seq;
+function CommentList(postId) {
     // Paging
     const [page, setPage] = useState(1);
     const [commentList, setCommentList] = useState([]);
 
     const getCommentList = async () => {
         await axios
-            .get(`http://localhost:8090/comments`, {
-                params: { boardSeq: seq, page: page },
-            })
+            .get(`http://localhost:8090/posts`)
             .then(resp => {
-                console.log('getCommentList () success:)');
-                console.log(resp.data);
-                setCommentList([...resp.data]);
+                console.log('getPostDetail () success:)');
+                console.log(resp.data[0].comments);
+                setCommentList([...commentList, resp.data[0].comments]);
             })
             .catch(err => {
                 console.log('getCommentList () error :<');
@@ -24,12 +20,8 @@ const CommentList = props => {
             });
     };
 
-    const changePage = page => {
-        setPage(page);
-        getCommentList(page);
-    };
     useEffect(() => {
-        getCommentList(1);
+        getCommentList(postId);
     }, []);
 
     return (
@@ -40,25 +32,16 @@ const CommentList = props => {
                     댓글 목록
                 </h5>
             </div>
-            <Pagination
-                activePage={page}
-                itemsCountPerPage={4}
-                // totalItemsCount={totalCnt}
-                pageRangeDisplayed={4}
-                prevPageText={'‹'}
-                nextPageText={'›'}
-                onChange={changePage}
-            />
 
-            {commentList.map(function (comments, id) {
+            {commentList.map(function (commentList) {
                 return (
-                    <div className="my-5" key={id}>
-                        {commentList[id].content}
+                    <div className="my-5" key={postId}>
+                        {commentList}
                     </div>
                 );
             })}
         </>
     );
-};
+}
 
 export default CommentList;
