@@ -2,7 +2,7 @@
     "post" : [
         {
             "id": 123321,
-            "postImageUrl": null,
+            "postImageUrl": "../images/picture3.png",
             "category": "clothes",
             "title": "titletitle",
             "contents": "contentscontents"

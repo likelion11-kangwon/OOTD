@@ -1,7 +1,7 @@
 import * as types from '../actions/actionTyeps'; //액션 코드로 가져온다.
 
 const post_reducer = {
-    postImageUrl: undefined,
+    postImageUrl: null,
     category: undefined,
     title: undefined,
     contents: undefined,
