@@ -15,7 +15,7 @@ function PostModify() {
     useEffect(() => {
         async function fetchData() {
             try {
-                let res = await axios.get(`${SERVER_URL}/post/${postId}`);
+                let res = await axios.get(`/api/post/${postId}`);
                 store.dispatch(actions._setImage(null));
                 store.dispatch(actions._setCategory(res.data.category));
                 store.dispatch(actions._setTitle(res.data.title));
@@ -45,10 +45,7 @@ function PostModify() {
      */
     const postPatch = () => {
         axios
-            .patch(
-                `${SERVER_URL}/postModify/${postId}`,
-                store.getState().postReducer,
-            )
+            .patch(`/api/post/${postId}`, store.getState().postReducer)
             .then(() => {
                 navigate('/mypage');
             })

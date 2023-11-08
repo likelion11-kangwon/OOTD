@@ -7,7 +7,7 @@ const Likes = () => {
 
     useEffect( async () => {
         await axios
-            .get(`http//localhost:8090/posts/${postId}`)
+            .get(`api/post/${postId}/like`)
             .then( resp => {
                 console.log('success to get');
                 if(resp.data.isLiked === 'liked') setLike(true)
@@ -15,8 +15,9 @@ const Likes = () => {
     }, []);
 
     const toggleLike = async (e) => {
+        // TODO 좋아요 포스트 없음
         await axios
-            .post('http//localhost:8090/posts/${postId}')
+            .post(`api/post/${postId}`)
             .then( resp => {
                 console.log('success to post');
                 setLike(!like);

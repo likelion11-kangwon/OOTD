@@ -17,7 +17,7 @@ function BoardDetail() {
     const postId = useParams().postId;
     const getPostDetail = async () => {
         await axios
-            .get(`http://localhost:8090/posts/${postId}`)
+            .get(`/api/post/${postId}`)
             .then(resp => {
                 console.log('getPostDetail() success:)');
                 console.log(resp.data);

@@ -10,7 +10,7 @@ function Comment() {
 
     const handleCommentSubmit = () => {
         axios
-            .post('http://localhost:8090/comments', {
+            .post(`/api/comment`, {
                 postId,
                 contents,
             })
@@ -26,7 +26,7 @@ function Comment() {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:8090/posts/${postId}`)
+            .get(`/api/post/${postId}`)
             .then(response => {
                 setComment(response.data.comments);
             })

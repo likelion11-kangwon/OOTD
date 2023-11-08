@@ -18,7 +18,7 @@ const BoardList_dev = () => {
 
     const getBoardList = async (search, page) => {
         await axios
-            .get('http://localhost:8090/posts', {
+            .get('/api/post/pages', {
                 params: { search: search, page: page },
             })
             .then(resp => {

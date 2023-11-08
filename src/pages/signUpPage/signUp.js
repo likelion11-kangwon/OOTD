@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
 import '../../styles/signUp.scss';
 import Wave from '../../assets/images/wave.png';
 import Confirm from '../../assets/images/confirm.svg';
-import axios from 'axios';
 
 function SignUp() {
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         username: '',
-        id: '',
+        loginId: '',
         password: '',
         passwordCheck: '',
     });
 
-    const [isUniqueId, setIsUniqueId] = useState(null);
     const [isPasswordMatch, setIsPasswordMatch] = useState(null);
 
     const handleInputChange = e => {
@@ -43,14 +46,14 @@ function SignUp() {
     const handleSignUp = () => {
         if (
             formData.username &&
-            formData.id &&
+            formData.loginId &&
             formData.password &&
             formData.passwordCheck &&
-            isUniqueId &&
             isPasswordMatch
         ) {
             try {
                 axios.post('/api/auth/register', formData);
+                navigate('/');
             } catch (error) {
                 console.error('Error during signup:', error);
             }
@@ -83,9 +86,9 @@ function SignUp() {
                         <div className="id-box">
                             <input
                                 type="text"
-                                id="id"
+                                id="loginId"
                                 placeholder="Enter your ID"
-                                value={formData.id}
+                                value={formData.loginId}
                                 onChange={handleInputChange}
                             />
                         </div>

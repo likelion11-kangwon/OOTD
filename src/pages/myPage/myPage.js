@@ -8,6 +8,7 @@ import postData from './postData';
 import { Link } from 'react-router-dom';
 
 function MyPage() {
+    // TODO 유저이름에 따라 get 해주는 api가 없어서 구현 x
     const username = registrationData.username;
     const [currentPage, setCurrentPage] = useState(0);
 

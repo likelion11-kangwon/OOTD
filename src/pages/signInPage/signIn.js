@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import '../../styles/signIn.scss';
-import Wave from '../../assets/images/wave.png';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+import '../../styles/signIn.scss';
+import Wave from '../../assets/images/wave.png';
+
 function SignIn() {
     const [formData, setFormData] = useState({
-        id: '',
+        loignId: '',
         password: '',
     });
 
@@ -22,10 +23,10 @@ function SignIn() {
 
     const handleLogin = () => {
         axios
-            .post('/api/auth/login', formData)
+            .post(`/api/auth/login`, formData)
             .then(response => {
                 if (response.data.success) {
-                    navigate('/myPage');
+                    navigate('/main');
                 } else {
                     alert('로그인 실패');
                 }
@@ -52,7 +53,7 @@ function SignIn() {
                             <div className="id-box">
                                 <input
                                     type="text"
-                                    id="id"
+                                    id="loginId"
                                     placeholder="Enter your ID"
                                     onChange={handleInputChange}
                                 />

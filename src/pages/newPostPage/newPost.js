@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import store from '../../store';
-import { SERVER_URL } from '../../service/constants';
 import PostEditComp from '../../components/postEdit_comp';
 import PostUHeader from '../../components/postUploadHeader';
 import '../../styles/newPost.scss';
@@ -28,7 +27,7 @@ function NewPost() {
      */
     const postNewPost = () => {
         axios
-            .post(`${SERVER_URL}/newPost`, store.getState().postReducer)
+            .post(`/api/post`, store.getState().postReducer)
             .then(() => {
                 navigate('/main');
             })
