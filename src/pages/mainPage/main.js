@@ -1,8 +1,9 @@
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import BoardPage from '../boardPage/BoardList_dev';
+import Board from '../../components/board/BoardList';
 import React from 'react';
 import { MdOutlineNavigateNext } from 'react-icons/md';
-import { BiSolidUserCircle } from 'react-icons/bi';
+import toMypageIcon from '../../assets/images/iconToMyPage.png';
+import { FaUserCircle } from 'react-icons/fa';
 import '../../styles/main.scss';
 import styled from 'styled-components';
 
@@ -27,11 +28,12 @@ const Main = () => {
                     </button>
                 </div>
                 <button onClick={navigateToMyPage} className="move-to-mypage">
-                    <BiSolidUserCircle
-                        size="40"
-                        color="white"
-                        className="mypage-icon"
-                    />
+                    {/*<FaUserCircle*/}
+                    {/*    size="40"*/}
+                    {/*    color="white"*/}
+                    {/*    className="mypage-icon"*/}
+                    {/*/>*/}
+                    <img src={toMypageIcon} className="tomypage" />
                 </button>
             </header>
             <body>
@@ -67,7 +69,9 @@ const Main = () => {
                     </div>
                 </div>
                 <section className="board-list">
-                    <div className="viewBoard"></div>
+                    <div className="viewBoard">
+                        <Board />
+                    </div>
                 </section>
             </body>
         </div>
