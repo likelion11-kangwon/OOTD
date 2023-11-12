@@ -23,13 +23,9 @@ function SignIn() {
 
     const handleLogin = () => {
         axios
-            .post(`/api/auth/login`, formData)
+            .post(`/api/auth/login`, formData, { withCredentials: true })
             .then(response => {
-                if (response.data.success) {
-                    navigate('/main');
-                } else {
-                    alert('로그인 실패');
-                }
+                navigate('/main');
             })
             .catch(error => {
                 alert('로그인 오류: ' + error.message);
