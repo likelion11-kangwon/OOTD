@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../styles/myPage.scss';
 import Profile from '../../assets/images/profile.png';
 import Pencil from '../../assets/images/pencil.svg';
@@ -6,25 +6,54 @@ import Heart from '../../assets/images/heart.svg';
 import registrationData from './registrationData ';
 import postData from './postData';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 function MyPage() {
     // TODO 유저이름에 따라 get 해주는 api가 없어서 구현 x
-    const username = registrationData.username;
-    const [currentPage, setCurrentPage] = useState(0);
 
-    const totalPages = postData.length;
+    const [currentPage, setCurrentPage] = useState(1);
+    const [myPostTotalPage, setMyPostTotalPage] = useState([]);
+    const [myLikeTotalPage, setMyLikeTotalPage] = useState([]);
 
-    const pages = Array.from({ length: totalPages }, (_, i) => i);
-    const currentPosts =
-        pages[currentPage] !== undefined
-            ? postData[pages[currentPage]].filter(post => post !== null)
-            : [];
+    const [myPage, setMyPage] = useState({
+        username: '',
+        myPostList: [],
+        myLikeList: [],
+    });
 
     const handlePageChange = page => {
-        if (page >= 0 && page < totalPages) {
-            setCurrentPage(page);
-        }
+        setCurrentPage(page);
     };
+    const fillArray = length =>
+        new Array(Math.floor((length - 1) / 4) + 1).fill().map((_, i) => i + 1);
+
+    useEffect(() => {
+        if (myPage.myPostList?.length > 0) {
+            setMyPostTotalPage(fillArray(myPage.myPostList.length));
+        }
+        if (myPage.myLikeList?.length > 0) {
+            setMyLikeTotalPage(fillArray(myPage.myLikeList.length));
+        }
+    }, [myPage]);
+
+    useEffect(() => {
+        axios({
+            url: '/api/user/mypage',
+            method: 'post',
+            withCredentials: true,
+        })
+            .then(resp => {
+                setMyPage(resp.data);
+                console.log(myPage);
+            })
+            .catch(err => {
+                setMyPage({
+                    username: '',
+                    myPosList: [],
+                    myLikeList: [],
+                });
+            });
+    }, []);
 
     return (
         <div className="mypage-frame">
@@ -38,7 +67,7 @@ function MyPage() {
                                 className="profile-img"
                             />
                         </div>
-                        <div className="name">{username}</div>
+                        <div className="name">{myPage.username}</div>
                     </div>
                     <div className="post-likes">
                         <div className="new-post">
@@ -82,42 +111,46 @@ function MyPage() {
                     <div className="mypost-count">
                         <div className="mypost-count-text">My Post</div>
                         <div className="mypost-count-number">
-                            {postData.reduce(
-                                (acc, page) => acc + (page ? page.length : 0),
-                                0,
-                            )}
+                            {myPage.myPostList.length}
                         </div>
                     </div>
                     <div className="picture-container">
-                        {currentPosts.map((post, index) => (
-                            <div className="picture-box" key={index}>
-                                <div className="picture-image">
-                                    <img
-                                        src={post.postImageUrl}
-                                        alt={`post-preview-${post.postId}`}
-                                        className="post-preview"
-                                    />
-                                </div>
-                                <div className="picture-edit-del-box">
-                                    <div className="picture-edit-del">
-                                        <div className="picture-edit-box">
-                                            <div className="picture-edit">
-                                                edit
+                        {myPage.myPostList
+                            .filter(
+                                (v, i) => Math.floor(i / 4) === currentPage - 1,
+                            )
+                            .map((post, index) => (
+                                <div className="picture-box" key={index}>
+                                    <div className="picture-image">
+                                        <img
+                                            src={post.imageUrl}
+                                            alt={`post-preview-${post.postId}`}
+                                            className="post-preview"
+                                        />
+                                    </div>
+                                    {post.title.length >= 10
+                                        ? post.title.slice(0, 9) + ' ...'
+                                        : post.title}
+                                    <div className="picture-edit-del-box">
+                                        <div className="picture-edit-del">
+                                            <div className="picture-edit-box">
+                                                <div className="picture-edit">
+                                                    edit
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="picture-del-box">
-                                            <div className="picture-del">
-                                                del
+                                            <div className="picture-del-box">
+                                                <div className="picture-del">
+                                                    del
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
                     </div>
                     <div className="mypage-number-container">
                         <div className="mypage-number-box">
-                            {pages.map((page, index) => (
+                            {myPostTotalPage.map((page, index) => (
                                 <div
                                     className={`mypage-number ${
                                         currentPage === page ? 'active' : ''
