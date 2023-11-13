@@ -1,17 +1,28 @@
-.postUHeader{
+.postUHeader {
     background-color: black;
     padding: 1rem;
 
-    .backBtn{
+    .backBtn {
         border: none;
         background: none;
-        color: #B7B7B7;
+        color: #b7b7b7;
+        height: 40px;
     }
 
-    h1{
+    h1 {
         margin: 1.5rem 0.67rem 0rem 0.67rem;
         font-weight: 500;
         font-size: 1.8rem;
         color: white;
+    }
+    .move-to-mypage {
+        position: absolute;
+        flex: 1;
+        float: left;
+        right: 30px;
+        img {
+            width: 35px;
+            height: 35px;
+        }
     }
 }

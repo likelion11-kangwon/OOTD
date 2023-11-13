@@ -3,9 +3,7 @@ import Board from '../../components/board/BoardList';
 import React from 'react';
 import { MdOutlineNavigateNext } from 'react-icons/md';
 import toMypageIcon from '../../assets/images/iconToMyPage.png';
-import { FaUserCircle } from 'react-icons/fa';
 import '../../styles/main.scss';
-import styled from 'styled-components';
 
 const Main = () => {
     const navigate = useNavigate();
@@ -28,11 +26,6 @@ const Main = () => {
                     </button>
                 </div>
                 <button onClick={navigateToMyPage} className="move-to-mypage">
-                    {/*<FaUserCircle*/}
-                    {/*    size="40"*/}
-                    {/*    color="white"*/}
-                    {/*    className="mypage-icon"*/}
-                    {/*/>*/}
                     <img src={toMypageIcon} className="tomypage" />
                 </button>
             </header>

@@ -6,9 +6,13 @@ import '../../styles/board.scss';
 
 const BoardList = () => {
     const [boardList, setBoardList] = useState([]);
+    const [loading, setLoading] = useState(null);
+    const [category, setCategory] = useState('all');
+
     const getBoardList = async () => {
         await axios
-            .get('/api/post/pages', { withCredentials: true } )
+            // .get('/api/post/pages', { withCredentials: true })
+            .get('http://localhost:8090/posts', { withCredentials: true })
             .then(resp => {
                 console.log('success :)');
                 console.log(resp.data);
@@ -34,7 +38,7 @@ const BoardList = () => {
                                 <Card
                                     id={boardList.id}
                                     title={boardList.title}
-                                    username={boardList.username}
+                                    {...boardList}
                                 />
                             </Link>
                         );
