@@ -1,45 +1,67 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useParams, useNavigate } from 'react-router-dom';
+
+import Header from '../../components/header/postDetailHeader';
+import Comment from '../../components/comment/Comment';
+import heartImg from '../../assets/images/heart.svg';
+import profileImg from '../../assets/images/profile.png';
+import '../../styles/boardDetail.scss';
 
 //상세페이지
-
-const BoardDetail = () => {
-    const params = useParams().postId;
-    const navigate = useNavigate();
-
-    // state
-    const [detailBoardData, setDetailBoardData] = useState([]);
+function BoardDetail() {
+    const [username, setUsername] = useState('');
+    const [title, setTitle] = useState('');
+    const [contents, setContents] = useState('');
+    const [imageUrl, setImageUrl] = useState();
+    const postId = useParams().postId;
+    const getPostDetail = async () => {
+        await axios
+            .get(`/api/post/${postId}`)
+            .then(resp => {
+                console.log('getPostDetail() success:)');
+                console.log(resp.data);
+                setTitle(resp.data.title);
+                setUsername(resp.data.username);
+                setContents(resp.data.content);
+                setImageUrl(resp.data.imageUrl);
+            })
+            .catch(err => {
+                console.log('getPostDetail() error :<');
+                console.log('err');
+            });
+    };
 
     useEffect(() => {
-        axios
-            .get(`http://localhost:8080/post/${params}`)
-            .then(response => {
-                setDetailBoardData(response.data);
-            })
-
-            .catch(function (error) {
-                console.log(error);
-            });
+        getPostDetail();
     }, []);
 
     return (
-        <div className="board-detail">
-            <div className="title">{detailBoardData.title}</div>
-
-            <div className="board-wrapper">
-                <div className="board-header">
-                    <p>작성자: {detailBoardData.userId}</p>
+        <div className="boardDetail">
+            <div className="header">
+                <Header />
+            </div>
+            <div className="boardDetail">
+                <div className="postCard">
+                    <div className="postCardH">
+                        <img src={profileImg} alt="profile image" />
+                        <div>{username}</div>
+                    </div>
+                    <img
+                        className="postCardImg"
+                        src={imageUrl}
+                        alt="post image"
+                    />
+                    <div className="postCardT">
+                        <div>{title}</div>
+                        <img src={heartImg} alt="like" />
+                    </div>
+                    <div>{contents}</div>
                 </div>
-
-                <div className="board-content">
-                    <p>{detailBoardData.content}</p>
-                    <p>{detailBoardData.postImageUrl}</p>
-                </div>
+                <Comment />
             </div>
         </div>
     );
-};
+}
 
 export default BoardDetail;

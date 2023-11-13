@@ -1,13 +1,60 @@
+import React, { useEffect, useState } from 'react';
 import '../../styles/myPage.scss';
 import Profile from '../../assets/images/profile.png';
 import Pencil from '../../assets/images/pencil.svg';
 import Heart from '../../assets/images/heart.svg';
-import Picture1 from '../../assets/images/picture1.png';
-import Picture2 from '../../assets/images/picture2.png';
-import Picture3 from '../../assets/images/picture3.png';
-import Picture4 from '../../assets/images/picture4.png';
+import registrationData from './registrationData ';
+import postData from './postData';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 function MyPage() {
+    // TODO 유저이름에 따라 get 해주는 api가 없어서 구현 x
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [myPostTotalPage, setMyPostTotalPage] = useState([]);
+    const [myLikeTotalPage, setMyLikeTotalPage] = useState([]);
+
+    const [myPage, setMyPage] = useState({
+        username: '',
+        myPostList: [],
+        myLikeList: [],
+    });
+
+    const handlePageChange = page => {
+        setCurrentPage(page);
+    };
+    const fillArray = length =>
+        new Array(Math.floor((length - 1) / 4) + 1).fill().map((_, i) => i + 1);
+
+    useEffect(() => {
+        if (myPage.myPostList?.length > 0) {
+            setMyPostTotalPage(fillArray(myPage.myPostList.length));
+        }
+        if (myPage.myLikeList?.length > 0) {
+            setMyLikeTotalPage(fillArray(myPage.myLikeList.length));
+        }
+    }, [myPage]);
+
+    useEffect(() => {
+        axios({
+            url: '/api/user/mypage',
+            method: 'post',
+            withCredentials: true,
+        })
+            .then(resp => {
+                setMyPage(resp.data);
+                console.log(myPage);
+            })
+            .catch(err => {
+                setMyPage({
+                    username: '',
+                    myPosList: [],
+                    myLikeList: [],
+                });
+            });
+    }, []);
+
     return (
         <div className="mypage-frame">
             <div className="mypage-box">
@@ -20,7 +67,7 @@ function MyPage() {
                                 className="profile-img"
                             />
                         </div>
-                        <div className="name">Like Lion</div>
+                        <div className="name">{myPage.username}</div>
                     </div>
                     <div className="post-likes">
                         <div className="new-post">
@@ -33,7 +80,9 @@ function MyPage() {
                                     />
                                 </div>
                             </div>
-                            <div className="new-post-text">New Post</div>
+                            <Link className="new-post-text" to="/newPost">
+                                New Post
+                            </Link>
                         </div>
                         <div className="my-likes">
                             <div className="likes-icon">
@@ -45,122 +94,75 @@ function MyPage() {
                                     />
                                 </div>
                             </div>
-                            <div className="my-likes-text">My Likes</div>
+                            <div
+                                className="my-likes-text"
+                                onClick={() => {
+                                    alert(
+                                        'My Likes 기능은 아직 구현되지 않았습니다.',
+                                    );
+                                }}
+                            >
+                                My Likes
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div className="mypost-box">
                     <div className="mypost-count">
                         <div className="mypost-count-text">My Post</div>
-                        <div className="mypost-count-number">12</div>
-                    </div>
-                    <div className="picture-box">
-                        <div className="picture-one">
-                            <div className="picture-one-image">
-                                <img
-                                    src={Picture1}
-                                    alt="picture1"
-                                    className="picture1-img"
-                                />
-                            </div>
-                            <div className="picture-one-edit-del-box">
-                                <div className="picture-one-edit-del">
-                                    <div className="picture-one-edit-box">
-                                        <div className="picture-one-edit">
-                                            edit
-                                        </div>
-                                    </div>
-                                    <div className="picture-one-del-box">
-                                        <div className="picture-one-del">
-                                            del
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="picture-two">
-                            <div className="picture-two-image">
-                                <img
-                                    src={Picture2}
-                                    alt="picture2"
-                                    className="picture2-img"
-                                />
-                            </div>
-                            <div className="picture-two-edit-del-box">
-                                <div className="picture-two-edit-del">
-                                    <div className="picture-two-edit-box">
-                                        <div className="picture-two-edit">
-                                            edit
-                                        </div>
-                                    </div>
-                                    <div className="picture-two-del-box">
-                                        <div className="picture-two-del">
-                                            del
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="picture-three">
-                            <div className="picture-three-image">
-                                <img
-                                    src={Picture3}
-                                    alt="picture3"
-                                    className="picture3-img"
-                                />
-                            </div>
-                            <div className="picture-three-edit-del-box">
-                                <div className="picture-three-edit-del">
-                                    <div className="picture-three-edit-box">
-                                        <div className="picture-three-edit">
-                                            edit
-                                        </div>
-                                    </div>
-                                    <div className="picture-three-del-box">
-                                        <div className="picture-three-del">
-                                            del
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="picture-four">
-                            <div className="picture-four-image">
-                                <img
-                                    src={Picture4}
-                                    alt="picture4"
-                                    className="picture4-img"
-                                />
-                            </div>
-                            <div className="picture-four-edit-del-box">
-                                <div className="picture-four-edit-del">
-                                    <div className="picture-four-edit-box">
-                                        <div className="picture-four-edit">
-                                            edit
-                                        </div>
-                                    </div>
-                                    <div className="picture-four-del-box">
-                                        <div className="picture-four-del">
-                                            del
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div className="mypost-count-number">
+                            {myPage.myPostList.length}
                         </div>
                     </div>
-                    <div className="mypage-number-box">
-                        <div className="mypage-number">
-                            <div className="mypage-number-one">
-                                <div className="mypage-number-one-text">1</div>
-                            </div>
-                            <div className="mypage-number-two">
-                                <div className="mypage-number-two-text">2</div>
-                            </div>
-                            <div className="mypage-number-three">
-                                <div className="mypage-number-three-text">
-                                    3
+                    <div className="picture-container">
+                        {myPage.myPostList
+                            .filter(
+                                (v, i) => Math.floor(i / 4) === currentPage - 1,
+                            )
+                            .map((post, index) => (
+                                <div className="picture-box" key={index}>
+                                    <div className="picture-image">
+                                        <img
+                                            src={post.imageUrl}
+                                            alt={`post-preview-${post.postId}`}
+                                            className="post-preview"
+                                        />
+                                    </div>
+                                    {post.title.length >= 10
+                                        ? post.title.slice(0, 9) + ' ...'
+                                        : post.title}
+                                    <div className="picture-edit-del-box">
+                                        <div className="picture-edit-del">
+                                            <div className="picture-edit-box">
+                                                <div className="picture-edit">
+                                                    edit
+                                                </div>
+                                            </div>
+                                            <div className="picture-del-box">
+                                                <div className="picture-del">
+                                                    del
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            ))}
+                    </div>
+                    <div className="mypage-number-container">
+                        <div className="mypage-number-box">
+                            {myPostTotalPage.map((page, index) => (
+                                <div
+                                    className={`mypage-number ${
+                                        currentPage === page ? 'active' : ''
+                                    }`}
+                                    key={page}
+                                    onClick={() => handlePageChange(page)}
+                                >
+                                    <div className="mypage-number-text">
+                                        {index + 1}
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>

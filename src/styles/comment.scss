@@ -1,0 +1,14 @@
+commentComp{
+  width:300px;
+
+  .commentInput{
+    display:grid;
+    grid-template-columns: 3fr 1fr;
+
+    margin-bottom: 1rem;
+  }
+  p{
+    margin: 0;
+    color: #767676;
+  }
+}
