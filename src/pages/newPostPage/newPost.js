@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import store from '../../store';
 import PostEditComp from '../../components/postEdit_comp';
-import PostUHeader from '../../components/postUploadHeader';
+import PostUHeader from '../../components/header/postUploadHeader';
 import '../../styles/newPost.scss';
 
 function NewPost() {

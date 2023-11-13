@@ -49,9 +49,6 @@ const Board = () => {
                     <div className="header-text">
                         <h2>BOARD</h2>
                     </div>
-                    <div className="to-mypage">
-                        <img src={toMyPageIcon} />
-                    </div>
                     {/*검색*/}
                     <div className="search-box">
                         <form className="search">

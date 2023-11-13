@@ -4,9 +4,8 @@ import axios from 'axios';
 
 import store from '../../store';
 import * as actions from '../../actions';
-import { SERVER_URL } from '../../service/constants';
 import PostEditComp from '../../components/postEdit_comp';
-import PostUHeader from '../../components/postUploadHeader';
+import PostUHeader from '../../components/header/postUploadHeader';
 import '../../styles/newPost.scss';
 
 function PostModify() {
