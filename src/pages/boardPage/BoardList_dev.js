@@ -20,7 +20,7 @@ const BoardList_dev = () => {
         await axios
             .get('/api/post/pages', {
                 params: { search: search, page: page },
-            })
+            }, { withCredentials: true })
             .then(resp => {
                 console.log('success :)');
                 console.log(resp.data);

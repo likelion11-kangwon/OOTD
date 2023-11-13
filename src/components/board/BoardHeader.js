@@ -11,11 +11,10 @@ function BoardHeader(){
 
     const getBoardList = async () => {
         await axios
-            .get('/api/post/pages')
+            .get('/api/post/pages', { withCredentials: true })
             .then(resp => {
                 console.log('success :)');
                 console.log(resp.data);
-
                 setBoardList([...resp.data]);
             })
             .catch(err => {
