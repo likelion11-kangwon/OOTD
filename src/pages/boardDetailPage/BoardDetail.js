@@ -17,7 +17,7 @@ function BoardDetail() {
     const postId = useParams().postId;
     const getPostDetail = async () => {
         await axios
-            .get(`/api/post/${postId}`)
+            .get(`/api/post/${postId}`, { withCredentials: true })
             .then(resp => {
                 console.log('getPostDetail() success:)');
                 console.log(resp.data);

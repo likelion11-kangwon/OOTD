@@ -13,7 +13,7 @@ function Comment() {
             .post(`/api/comment`, {
                 postId: postId,
                 contents: contents,
-            })
+            }, { withCredentials: true } )
             .then(response => {
                 const newComment = response.data.comments;
                 setComments([...comments, newComment]);
@@ -26,7 +26,8 @@ function Comment() {
 
     useEffect(() => {
         axios
-            .get(`/api/post/${postId}`)
+            .get(`/api/post/${postId}`,
+            { withCredentials: true } )
             .then(response => {
                 setComments(response.data.comments);
             })
