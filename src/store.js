@@ -6,6 +6,6 @@ const store = configureStore({
     reducer: reducers,
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware({ serializableCheck: false }).concat(logger),
-    devTools: true, //TODO 배포 시 false로 설정해두기
+    devTools: false,
 });
 export default store;

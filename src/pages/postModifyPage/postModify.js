@@ -36,7 +36,6 @@ function PostModify() {
         isAllFill = reducerJson.contents ? isAllFill : false;
 
         if (isAllFill) {
-            console.log(store.getState().postReducer); // TODO debuging
             postPatch();
         } else {
             alert('모든 항목이 입력되었는지 확인해주세요.');

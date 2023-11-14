@@ -4,30 +4,11 @@ import axios from 'axios';
 import '../../styles/comment.scss';
 
 function Comment() {
-    // TODO comment test
-    const commentsEx = [
-        {
-            username: 'ma',
-            contents: 'mama',
-        },
-        {
-            username: 'mamama',
-            contents: 'mamamamama',
-        },
-    ];
     const [comments, setComments] = useState(commentsEx);
     const [contents, setContents] = useState('');
     const postId = useParams().postId;
 
     const handleCommentSubmit = () => {
-        // TODO comment test
-        setComments([
-            ...comments,
-            {
-                username: 'mamamama',
-                contents: contents,
-            },
-        ]);
         axios
             .post(`/api/comment`, {
                 postId: postId,
