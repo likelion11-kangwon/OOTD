@@ -4,19 +4,38 @@ import axios from 'axios';
 import '../../styles/comment.scss';
 
 function Comment() {
-    const [comment, setComment] = useState([]);
+    // TODO comment test
+    const commentsEx = [
+        {
+            username: 'ma',
+            contents: 'mama',
+        },
+        {
+            username: 'mamama',
+            contents: 'mamamamama',
+        },
+    ];
+    const [comments, setComments] = useState(commentsEx);
     const [contents, setContents] = useState('');
     const postId = useParams().postId;
 
     const handleCommentSubmit = () => {
+        // TODO comment test
+        setComments([
+            ...comments,
+            {
+                username: 'mamamama',
+                contents: contents,
+            },
+        ]);
         axios
             .post(`/api/comment`, {
-                postId,
-                contents,
+                postId: postId,
+                contents: contents,
             })
             .then(response => {
                 const newComment = response.data.comments;
-                setComment([...comment, newComment]);
+                setComments([...comments, newComment]);
                 setContents('');
             })
             .catch(error => {
@@ -28,12 +47,12 @@ function Comment() {
         axios
             .get(`/api/post/${postId}`)
             .then(response => {
-                setComment(response.data.comments);
+                setComments(response.data.comments);
             })
             .catch(error => {
                 console.error('Error fetching postId:', error);
             });
-    }, [postId]);
+    }, []);
     return (
         <div className="commentComp">
             <div className="commentInput">
@@ -45,14 +64,13 @@ function Comment() {
                 <button onClick={handleCommentSubmit}>Add Comment</button>
             </div>
             <div className="comment-list">
-                {comment &&
-                    comment.map((comment, id) => (
-                        <div key={id}>
-                            <p>
-                                {comment.username}:{comment.contents}
-                            </p>
-                        </div>
-                    ))}
+                {comments.map((comment, id) => (
+                    <div key={id}>
+                        <p>
+                            {comment.username}: {comment.contents}
+                        </p>
+                    </div>
+                ))}
             </div>
         </div>
     );
