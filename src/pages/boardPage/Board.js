@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BiSearchAlt } from 'react-icons/bi';
 import axios from 'axios';
-import toMyPageIcon from '../../assets/images/iconToMyPage.png';
 import Header from '../../components/header/BoardHeader';
-import BoardList from '../../components/board/BoardList';
 import Card from '../../components/board/Card';
+import SearchForm from '../../components/search/SearchForm';
+import '../../styles/board.scss';
 
 const Board = () => {
     const [boardList, setBoardList] = useState([]);
     const [userValue, setUserValue] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState('category');
     const [searched, setSearched] = useState([]);
     const [searching, setSearching] = useState(false);
+
+    const categories = ['all', 'clothes', 'shoes', 'acc'];
 
     let navigate = useNavigate();
 
@@ -20,14 +22,22 @@ const Board = () => {
     };
 
     const handleSearch = e => {
-        e.preventDefault(); // Prevent form submission, which causes the page to reload
-        setSearching(true);
-    };
-
-    const handleOnClick = e => {
         if (e.key === 'Enter') {
+            e.preventDefault();
             setSearching(true);
         }
+    };
+
+    const handleClear = () => {
+        setUserValue('');
+        setSearched([]);
+        setSearching(false);
+    };
+
+    const handleCategoryChange = newCategory => {
+        setSelectedCategory(newCategory);
+        setSearched([]);
+        setUserValue('');
     };
 
     useEffect(() => {
@@ -45,21 +55,45 @@ const Board = () => {
         getBoardList();
     }, []);
 
+    // useEffect(() => {
+    //     const fetchPostsByCategory = async () => {
+    //         try {
+    //             const response = await axios.get(
+    //                 `http://localhost:8090/posts/category/${selectedCategory}`,
+    //                 {
+    //                     withCredentials: true,
+    //                 },
+    //             );
+
+    //             setBoardList([...response.data]);
+    //         } catch (err) {
+    //             console.log('Error fetching posts by category:', err);
+    //         }
+    //     };
+
+    //     fetchPostsByCategory();
+    // }, [selectedCategory]);
+
     useEffect(() => {
         if (searching) {
-            const result = boardList.filter(item =>
-                item.title.toLowerCase().includes(userValue),
-            );
-            setSearched(result);
+            let filteredList;
+
+            if (selectedCategory === 'all') {
+                filteredList = boardList.filter(item =>
+                    item.title.toLowerCase().includes(userValue),
+                );
+            } else {
+                filteredList = boardList.filter(
+                    item =>
+                        item.title.toLowerCase().includes(userValue) &&
+                        item.category === selectedCategory,
+                );
+            }
+
+            setSearched(filteredList);
             setSearching(false);
         }
-    }, [searching, userValue, boardList]);
-
-    const handleBackClick = () => {
-        // Reset the search results and clear the search input
-        setSearched([]);
-        setUserValue('');
-    };
+    }, [searching, userValue, selectedCategory, boardList]);
 
     return (
         <>
@@ -68,34 +102,58 @@ const Board = () => {
                     <Header />
                 </div>
                 <div className="header-section">
-                    <div className="header-text">
-                        <h2>BOARD</h2>
-                    </div>
-                    <div className="search-box">
-                        <form className="search" onSubmit={handleSearch}>
-                            <input
-                                type="text"
-                                placeholder="search posts"
-                                value={userValue}
-                                onChange={getValue}
-                                onKeyDown={handleOnClick}
-                            />
-                            <button type="button" onClick={handleOnClick}>
-                                <BiSearchAlt />
-                            </button>
-                        </form>
+                    <div className="header-wrapper">
+                        <div className="header-text">
+                            <h2>BOARD</h2>
+                        </div>
+                        <div className="category-select">
+                            <select
+                                className="selects"
+                                id="category"
+                                value={selectedCategory}
+                                onChange={e =>
+                                    handleCategoryChange(e.target.value)
+                                }
+                            >
+                                {categories.map(category => (
+                                    <option key={category} value={category}>
+                                        {category}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <div className="search-box">
+                            <div className="search-box">
+                                <SearchForm
+                                    userValue={userValue}
+                                    onChange={setUserValue}
+                                    onKeyDown={handleSearch}
+                                    onClick={handleSearch}
+                                    onClear={handleClear}
+                                />
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div className="search-results">
-                    {searched.length > 0
-                        ? searched.map(post => (
-                              <Card
-                                  key={post.id}
-                                  title={post.title}
-                                  {...post}
-                              />
-                          ))
-                        : boardList.map(post => <BoardList />)}
+                <div className="board-container">
+                    <div className="row">
+                        {searched.length > 0
+                            ? searched.map(post => (
+                                  <Card
+                                      key={post.id}
+                                      title={post.title}
+                                      {...post}
+                                  />
+                              ))
+                            : // <BoardList />
+                              boardList.map(post => (
+                                  <Card
+                                      key={post.id}
+                                      title={post.title}
+                                      {...post}
+                                  />
+                              ))}
+                    </div>
                 </div>
             </div>
         </>

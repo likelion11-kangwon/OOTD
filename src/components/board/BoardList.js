@@ -6,25 +6,19 @@ import '../../styles/board.scss';
 
 const BoardList = () => {
     const [boardList, setBoardList] = useState([]);
-    const [loading, setLoading] = useState(null);
-    const [category, setCategory] = useState('all');
-
-    const getBoardList = async () => {
-        await axios
-            // .get('/api/post/pages', { withCredentials: true })
-            .get('http://localhost:8090/posts', { withCredentials: true })
-            .then(resp => {
-                console.log('success :)');
-                console.log(resp.data);
-
-                setBoardList([...resp.data]);
-            })
-            .catch(err => {
-                console.log('err');
-            });
-    };
 
     useEffect(() => {
+        const getBoardList = async () => {
+            try {
+                const resp = await axios.get('http://localhost:8090/posts', {
+                    withCredentials: true,
+                });
+                setBoardList([...resp.data]);
+            } catch (err) {
+                console.log('Error fetching data:', err);
+            }
+        };
+
         getBoardList();
     }, []);
 

@@ -1,43 +1,35 @@
 @font-face {
-  font-family: 'Pretendard-Regular';
-  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-  font-style: normal;
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+        format('woff');
+    font-style: normal;
 }
 
-*{
-  font-family: 'Pretendard', serif;
-  text-decoration: none;
-  color: black;
+* {
+    font-family: 'Pretendard', serif;
+    text-decoration: none;
+    color: black;
 }
 
-.cardContainer{
-  img{
-    height: 170px;
-    width: 170px;
-  }
-  .card-info{
-    position: relative;
-    img{
-      height: 20px;
-      width: 20px;
-      border-radius: 50%;
-      float: left;
+.cardContainer {
+    img {
+        height: 170px;
+        width: 170px;
     }
-    .text-container{
-      h2{
-        font-size: 18px;
-        font-weight: 700;
-        margin-top: -10px;
-      }
-      h4{
-        font-size: 15px;
-        font-weight: 400;
-        padding-left: 25px;
-      }
+    .card-info {
+        position: relative;
+        img {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            float: left;
+        }
+        .text-container {
+            h2 {
+                font-size: 18px;
+                font-weight: 700;
+                margin-top: -3px;
+            }
+        }
     }
-  }
 }
-
-
-
-
