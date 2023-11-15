@@ -1,4 +1,4 @@
-import '../postUploadHeader.scss';
+import './postUploadHeader.scss';
 import toMypageIcon from '../../assets/images/iconToMyPage.png';
 import { useNavigate } from 'react-router-dom';
 

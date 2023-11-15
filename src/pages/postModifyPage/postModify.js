@@ -15,8 +15,10 @@ function PostModify() {
     useEffect(() => {
         async function fetchData() {
             try {
-                let res = await axios.get(`/api/post/${postId}`, { withCredentials: true });
-                
+                let res = await axios.get(`/api/post/${postId}`, {
+                    withCredentials: true,
+                });
+
                 setImgP(res.data.postImageUrl);
                 store.dispatch(actions._setImage(null));
                 store.dispatch(actions._setCategory(res.data.category));
@@ -46,7 +48,11 @@ function PostModify() {
      */
     const postPatch = () => {
         axios
-            .patch(`/api/post/${postId}`, { withCredentials: true }, store.getState().postReducer)
+            .patch(
+                `/api/post/${postId}`,
+                { withCredentials: true },
+                store.getState().postReducer,
+            )
             .then(() => {
                 navigate('/mypage');
             })

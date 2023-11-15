@@ -52,7 +52,9 @@ function SignUp() {
             isPasswordMatch
         ) {
             try {
-                axios.post('/api/auth/register', formData, { withCredentials: true });
+                axios.post('/api/auth/register', formData, {
+                    withCredentials: true,
+                });
                 navigate('/');
             } catch (error) {
                 console.error('Error during signup:', error);

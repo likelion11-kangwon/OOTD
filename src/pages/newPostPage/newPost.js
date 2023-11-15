@@ -27,7 +27,11 @@ function NewPost() {
      */
     const postNewPost = () => {
         axios
-            .post(`/api/post`, { withCredentials: true }, store.getState().postReducer)
+            .post(
+                `/api/post`,
+                { withCredentials: true },
+                store.getState().postReducer,
+            )
             .then(() => {
                 navigate('/main');
             })

@@ -4,16 +4,20 @@ import axios from 'axios';
 import '../../styles/comment.scss';
 
 function Comment() {
-    const [comments, setComments] = useState(commentsEx);
+    const [comments, setComments] = useState();
     const [contents, setContents] = useState('');
     const postId = useParams().postId;
 
     const handleCommentSubmit = () => {
         axios
-            .post(`/api/comment`, {
-                postId: postId,
-                contents: contents,
-            }, { withCredentials: true } )
+            .post(
+                `/api/comment`,
+                {
+                    postId: postId,
+                    contents: contents,
+                },
+                { withCredentials: true },
+            )
             .then(response => {
                 const newComment = response.data.comments;
                 setComments([...comments, newComment]);
@@ -26,8 +30,7 @@ function Comment() {
 
     useEffect(() => {
         axios
-            .get(`/api/post/${postId}`,
-            { withCredentials: true } )
+            .get(`/api/post/${postId}`, { withCredentials: true })
             .then(response => {
                 setComments(response.data.comments);
             })
