@@ -204,6 +204,7 @@
                             gap: 12px;
 
                             .picture-edit-box {
+                                cursor:pointer;
                                 display: flex;
                                 padding: 2px 8px;
                                 justify-content: center;
@@ -224,6 +225,7 @@
                             }
 
                             .picture-del-box {
+                                cursor: pointer;
                                 display: flex;
                                 padding: 2px 8px;
                                 justify-content: center;

@@ -1,7 +1,7 @@
 import * as types from '../actions/actionTyeps'; //액션 코드로 가져온다.
 
 const post_reducer = {
-    postImageUrl: null,
+    imageFile: null,
     category: undefined,
     title: undefined,
     contents: undefined,
@@ -9,7 +9,7 @@ const post_reducer = {
 export default function postReducer(state = post_reducer, action) {
     switch (action.type) {
         case types._SETIMAGE:
-            return { ...state, postImageUrl: action.data };
+            return { ...state, imageFile: action.data };
         case types._SETCATEGOTY:
             return { ...state, category: action.data };
         case types._SETTITLE:

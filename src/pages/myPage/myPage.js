@@ -5,10 +5,11 @@ import Pencil from '../../assets/images/pencil.svg';
 import Heart from '../../assets/images/heart.svg';
 import registrationData from './registrationData ';
 import postData from './postData';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function MyPage() {
+    const navigator = useNavigate();
     // TODO 유저이름에 따라 get 해주는 api가 없어서 구현 x
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -133,12 +134,45 @@ function MyPage() {
                                         : post.title}
                                     <div className="picture-edit-del-box">
                                         <div className="picture-edit-del">
-                                            <div className="picture-edit-box">
+                                            <div
+                                                className="picture-edit-box"
+                                                onClick={() => {
+                                                    navigator(
+                                                        `/postModify/${post.postId}`,
+                                                    );
+                                                }}
+                                            >
                                                 <div className="picture-edit">
                                                     edit
                                                 </div>
                                             </div>
-                                            <div className="picture-del-box">
+                                            <div
+                                                className="picture-del-box"
+                                                onClick={() => {
+                                                    if (
+                                                        // eslint-disable-next-line no-restricted-globals
+                                                        confirm(
+                                                            `"${post.title}" 게시물을 삭제하시겠습니까?`,
+                                                        )
+                                                    ) {
+                                                        axios
+                                                            .delete(
+                                                                `/api/post/${post.postId}`,
+                                                            )
+                                                            .then(() => {
+                                                                // TODO 포스트 다시 가져오기(get) 밑에 코드로 시도해보려했으나 실패함
+                                                                setCurrentPage(
+                                                                    currentPage,
+                                                                );
+                                                            })
+                                                            .catch(err => {
+                                                                console.log(
+                                                                    err,
+                                                                );
+                                                            });
+                                                    }
+                                                }}
+                                            >
                                                 <div className="picture-del">
                                                     del
                                                 </div>

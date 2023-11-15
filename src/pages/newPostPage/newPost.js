@@ -11,7 +11,7 @@ function NewPost() {
     const handleUpload = () => {
         let isAllFill = true;
         let reducerJson = store.getState().postReducer;
-        isAllFill = reducerJson.postImageUrl ? isAllFill : false;
+        isAllFill = reducerJson.imageFile ? isAllFill : false;
         isAllFill = reducerJson.category ? isAllFill : false;
         isAllFill = reducerJson.title ? isAllFill : false;
         isAllFill = reducerJson.contents ? isAllFill : false;
@@ -23,7 +23,7 @@ function NewPost() {
         }
     };
     /**
-     * {userId: int, Category: String, postImageUrl, title: String, contents: String} -> 성공시{status: 200}
+     * {userId: int, Category: String, imageFile, title: String, contents: String} -> 성공시{status: 200}
      */
     const postNewPost = () => {
         axios

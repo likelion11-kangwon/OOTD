@@ -44,7 +44,7 @@ function PostModify() {
         }
     };
     /**
-     * {postId: int, Category: String, postImageUrl, title: String, contents: String} ->성공/실패 코드
+     * {postId: int, Category: String, imageFile, title: String, contents: String} ->성공/실패 코드
      */
     const postPatch = () => {
         axios
