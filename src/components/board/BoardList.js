@@ -13,9 +13,6 @@ const BoardList = () => {
         await axios
             .get('/api/post/pages', { withCredentials: true })
             .then(resp => {
-                console.log('success :)');
-                console.log(resp.data);
-
                 setBoardList(resp.data.postsSimple);
             })
             .catch(err => {
@@ -24,17 +21,6 @@ const BoardList = () => {
     };
 
     useEffect(() => {
-        const getBoardList = async () => {
-            try {
-                const resp = await axios.get('/api/post/pages', {
-                    withCredentials: true,
-                });
-                setBoardList([...resp.data]);
-            } catch (err) {
-                console.log('Error fetching data:', err);
-            }
-        };
-
         getBoardList();
     }, []);
 
@@ -50,7 +36,7 @@ const BoardList = () => {
                                         return (
                                             <PictureBox
                                                 key={index}
-                                                postId={index}
+                                                postId={post.postId}
                                                 imageUrl={post.imageUrl}
                                                 title={post.title}
                                                 navigate={navigate}

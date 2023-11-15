@@ -4,7 +4,7 @@ import axios from 'axios';
 import '../../styles/comment.scss';
 
 function Comment() {
-    const [comments, setComments] = useState();
+    const [comments, setComments] = useState([]);
     const [contents, setContents] = useState('');
     const postId = useParams().postId;
 
@@ -19,7 +19,7 @@ function Comment() {
                 { withCredentials: true },
             )
             .then(response => {
-                const newComment = response.data.comments;
+                const newComment = response.data.comment;
                 setComments([...comments, newComment]);
                 setContents('');
             })
@@ -33,6 +33,7 @@ function Comment() {
             .get(`/api/post/${postId}`, { withCredentials: true })
             .then(response => {
                 setComments(response.data.comments);
+                console.log(Comment);
             })
             .catch(error => {
                 console.error('Error fetching postId:', error);
