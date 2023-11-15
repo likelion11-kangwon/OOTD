@@ -22,6 +22,10 @@ function BoardHeader(){
             });
     };
 
+    const navigateToMyPage = () => {
+        navigate('/myPage');
+    };
+
     //검색
     const changeSearch = e => {
         setSearchVal(e.target.value);

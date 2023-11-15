@@ -1,4 +1,4 @@
-import '../postUploadHeader.scss';
+import './postUploadHeader.scss';
 import { useNavigate } from 'react-router-dom';
 
 const PostDetailHeader = () => {
@@ -11,7 +11,6 @@ const PostDetailHeader = () => {
             <button onClick={navigateToBoard} className="backBtn">
                 &lt;Back
             </button>
-            <h1>POST</h1>
         </div>
     );
 };

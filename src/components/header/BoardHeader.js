@@ -1,4 +1,4 @@
-import '../postUploadHeader.scss';
+import './postUploadHeader.scss';
 import { useNavigate } from 'react-router-dom';
 
 const BoardHeader = () => {
