@@ -1,17 +1,36 @@
-.postUHeader{
+.postUHeader-wrapper {
     background-color: black;
-    padding: 1rem;
+    .postUHeader {
+        flex: 1;
+        @media (min-width: 768px) {
+            margin-left: 20%;
+            margin-right: 20%;
+        }
+        padding: 1rem;
+        position: relative;
 
-    .backBtn{
-        border: none;
-        background: none;
-        color: #B7B7B7;
-    }
+        .backBtn {
+            border: none;
+            background: none;
+            color: #b7b7b7;
+            height: 40px;
+            // float: left;
+        }
 
-    h1{
-        margin: 1.5rem 0.67rem 0rem 0.67rem;
-        font-weight: 500;
-        font-size: 1.8rem;
-        color: white;
+        h1 {
+            margin: 1.5rem 0.67rem 0rem 0.67rem;
+            font-weight: 500;
+            font-size: 1.8rem;
+            color: white;
+        }
+        .move-to-mypage {
+            flex: 1;
+            right: 30px;
+            position: absolute;
+            img {
+                width: 33px;
+                height: 33px;
+            }
+        }
     }
 }

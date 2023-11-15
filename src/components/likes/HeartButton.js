@@ -1,4 +1,3 @@
-import react, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import HeartImg from '../../assets/images/heart.png';
 import EmptyHeartImg from '../../assets/images/empty-heart.png';

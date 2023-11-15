@@ -7,10 +7,13 @@ const PostDetailHeader = () => {
         navigate('/board');
     };
     return (
-        <div className="postUHeader">
-            <button onClick={navigateToBoard} className="backBtn">
-                &lt;Back
-            </button>
+        <div className="postUHeader-wrapper">
+            <div className="postUHeader">
+                <button onClick={navigateToBoard} className="backBtn">
+                    &lt;Back
+                </button>
+                <h1>POST</h1>
+            </div>
         </div>
     );
 };

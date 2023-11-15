@@ -1,39 +1,61 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": "json-server1",
-      "username": "typicode1",
-      "content": "내용1",
-      "imageUrl": "https://mblogthumb-phinf.pstatic.net/MjAyMTA3MDZfNiAg/MDAxNjI1NTgwMDU4MTQz.GtBb43jJQsU0RJTYdvLgZsd-nE0nFCDUDMWJUQauObYg.gz9W3x0-Oav_r-JYumNi0_zrHvsetzYOza7NYwj8E6Eg.JPEG.dkfk7725/Internet_20210706_230040_3.jpeg?type=w800",
-      "comments": [
+    "posts": [
         {
-          "username": "user1",
-          "contents": "내용"
+            "id": 1,
+            "title": "json-server1",
+            "username": "typicode1",
+            "content": "내용1",
+            "category": "all",
+            "imageUrl": "https://mblogthumb-phinf.pstatic.net/MjAyMTA3MDZfNiAg/MDAxNjI1NTgwMDU4MTQz.GtBb43jJQsU0RJTYdvLgZsd-nE0nFCDUDMWJUQauObYg.gz9W3x0-Oav_r-JYumNi0_zrHvsetzYOza7NYwj8E6Eg.JPEG.dkfk7725/Internet_20210706_230040_3.jpeg?type=w800"
         },
         {
-          "username": "user2",
-          "contents": "내용2"
+            "id": 2,
+            "title": "json-server2",
+            "username": "typicode2",
+            "content": "내용2",
+            "category": "clothes"
+        },
+        {
+            "id": 3,
+            "title": "json-server3",
+            "username": "typicode3",
+            "content": "내용3",
+            "category": "shoes"
+        },
+        {
+            "id": 4,
+            "title": "json-server4",
+            "username": "typicode4",
+            "content": "내용4",
+            "category": "acc"
+        },
+        {
+            "id": 5,
+            "title": "json-server5",
+            "username": "typicode5",
+            "content": "내용5",
+            "category": "acc"
+        },
+        {
+            "id": 6,
+            "title": "json-server6",
+            "username": "typicode5",
+            "content": "내용5",
+            "category": "acc"
+        },
+        {
+            "id": 7,
+            "title": "json-server7",
+            "username": "typicode5",
+            "content": "내용5",
+            "category": "acc"
+        },
+        {
+            "id": 8,
+            "title": "json-server8",
+            "username": "typicode5",
+            "content": "내용5",
+            "category": "acc"
         }
-      ]
-    },
-    {
-      "id": 2,
-      "title": "json-server2",
-      "username": "typicode2",
-      "content": "내용2"
-    },
-    {
-      "id": 3,
-      "title": "json-server3",
-      "username": "typicode3",
-      "content": "내용3"
-    },
-    {
-      "id": 4,
-      "title": "json-server4",
-      "username": "typicode4",
-      "content": "내용4"
-    }
-  ]
+    ]
 }

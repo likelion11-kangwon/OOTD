@@ -1,0 +1,33 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+        format('woff');
+    font-style: normal;
+}
+
+.category-section {
+    // margin-left: -30px;
+    .category-buttons-wrap {
+        // margin: auto;
+        ul {
+            padding-top: 10px;
+            li {
+                float: left;
+                width: 25%;
+                height: 40px;
+                line-height: 10px;
+                text-align: center;
+                list-style: none;
+                display: block;
+                button {
+                    font-family: 'Pretendard', serif;
+                    font-size: 15px;
+                }
+                button:hover {
+                    color: #a431b9;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
