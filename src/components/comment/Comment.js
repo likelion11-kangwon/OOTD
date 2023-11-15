@@ -4,19 +4,19 @@ import axios from 'axios';
 import '../../styles/comment.scss';
 
 function Comment() {
-    const [comment, setComment] = useState([]);
+    const [comments, setComments] = useState(commentsEx);
     const [contents, setContents] = useState('');
     const postId = useParams().postId;
 
     const handleCommentSubmit = () => {
         axios
             .post(`/api/comment`, {
-                postId,
-                contents,
+                postId: postId,
+                contents: contents,
             }, { withCredentials: true } )
             .then(response => {
                 const newComment = response.data.comments;
-                setComment([...comment, newComment]);
+                setComments([...comments, newComment]);
                 setContents('');
             })
             .catch(error => {
@@ -29,12 +29,12 @@ function Comment() {
             .get(`/api/post/${postId}`,
             { withCredentials: true } )
             .then(response => {
-                setComment(response.data.comments);
+                setComments(response.data.comments);
             })
             .catch(error => {
                 console.error('Error fetching postId:', error);
             });
-    }, [postId]);
+    }, []);
     return (
         <div className="commentComp">
             <div className="commentInput">
@@ -46,14 +46,13 @@ function Comment() {
                 <button onClick={handleCommentSubmit}>Add Comment</button>
             </div>
             <div className="comment-list">
-                {comment &&
-                    comment.map((comment, id) => (
-                        <div key={id}>
-                            <p>
-                                {comment.username}:{comment.contents}
-                            </p>
-                        </div>
-                    ))}
+                {comments.map((comment, id) => (
+                    <div key={id}>
+                        <p>
+                            {comment.username}: {comment.contents}
+                        </p>
+                    </div>
+                ))}
             </div>
         </div>
     );

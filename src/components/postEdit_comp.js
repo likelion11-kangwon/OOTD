@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import PostCate from './postEditZip/postCate';
 import PostText from './postEditZip/postText';
@@ -7,9 +7,8 @@ import * as actions from '../actions';
 import nullImg from '../assets/images/uploadImage.png';
 import './postEdit_comp.scss';
 
-function PostEditComp() {
-    const [imgPath, setImgPath] = useState();
-    const imageUrl = useSelector(state => state.postReducer.postImageUrl);
+function PostEditComp({ imgP }) {
+    const [imgPath, setImgPath] = useState(imgP);
     const dispatch = useDispatch();
 
     const handleImage = async e => {
@@ -20,7 +19,7 @@ function PostEditComp() {
         if (file) {
             setImgPath(URL.createObjectURL(file));
             const bodyFormData = new FormData();
-            bodyFormData.append('multipartFile', imageUrl);
+            bodyFormData.append('multipartFile', file);
             dispatch(actions._setImage(bodyFormData));
         }
     };

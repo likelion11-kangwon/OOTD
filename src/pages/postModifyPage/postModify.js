@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
@@ -9,12 +9,15 @@ import PostUHeader from '../../components/header/postUploadHeader';
 import '../../styles/newPost.scss';
 
 function PostModify() {
+    const [imgP, setImgP] = useState();
     const navigate = useNavigate();
     const postId = useParams().postId;
     useEffect(() => {
         async function fetchData() {
             try {
                 let res = await axios.get(`/api/post/${postId}`, { withCredentials: true });
+                
+                setImgP(res.data.postImageUrl);
                 store.dispatch(actions._setImage(null));
                 store.dispatch(actions._setCategory(res.data.category));
                 store.dispatch(actions._setTitle(res.data.title));
@@ -28,7 +31,6 @@ function PostModify() {
     const handleSave = () => {
         let isAllFill = true;
         let reducerJson = store.getState().postReducer;
-        isAllFill = reducerJson.postImageUrl ? isAllFill : false;
         isAllFill = reducerJson.category ? isAllFill : false;
         isAllFill = reducerJson.title ? isAllFill : false;
         isAllFill = reducerJson.contents ? isAllFill : false;
@@ -56,7 +58,7 @@ function PostModify() {
     return (
         <div className="postModify">
             <PostUHeader headTitle="EDIT POST" />
-            <PostEditComp />
+            <PostEditComp imgP={imgP} />
             <div className="submit_btn_container">
                 <button
                     className="submit_btn"
