@@ -97,11 +97,9 @@
                         width: 40px;
                         height: 20px;
                         color: #ddddddcc;
-                        font-size: 0.9rem;
-                        margin-left: 5px;
-                        &:hover,
-                        &:focus {
-                            color: #a431b9;
+                        .clear-button {
+                            height: 12px;
+                            width: 12px;
                         }
                     }
                     .search-icon {

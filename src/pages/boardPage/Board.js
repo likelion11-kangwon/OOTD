@@ -5,13 +5,14 @@ import Header from '../../components/header/BoardHeader';
 import Card from '../../components/board/Card';
 import SearchForm from '../../components/search/SearchForm';
 import CategoryBar from '../../components/board/CategoryBar';
-import BoardList from '../../components/board/BoardList';
+// import BoardList from '../../components/board/BoardList';
 import '../../styles/board.scss';
 
 const Board = () => {
     const [boardList, setBoardList] = useState([]);
     const [userValue, setUserValue] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('all');
+    const [selectedCategoryBar, setSelectedCategoryBar] = useState('all');
     const [searched, setSearched] = useState([]);
     const [searching, setSearching] = useState(false);
     const [hasSearched, setHasSearched] = useState(false);
@@ -41,6 +42,25 @@ const Board = () => {
         setSelectedCategory(newCategory);
         setSearched([]);
         setUserValue('');
+    };
+
+    const handleCategoryBar = async Category => {
+        setSelectedCategoryBar(Category);
+        setSearched([]);
+        setUserValue('');
+        try {
+            const response = await axios.get('http://localhost:8090/posts', {
+                params: {
+                    category: Category,
+                },
+            });
+
+            const postsForCategory = response.data || [];
+            setBoardList(postsForCategory);
+            setHasSearched(false);
+        } catch (error) {
+            console.error('Error fetching posts by category:', error);
+        }
     };
 
     useEffect(() => {
@@ -143,28 +163,28 @@ const Board = () => {
                 </div>
                 <div className="board-body">
                     <div className="category-bar-section">
-                        <CategoryBar />
+                        <CategoryBar onSelectCategory={handleCategoryBar} />
                     </div>
                     <div className="board-container">
                         <div className="row">
-                            {hasSearched && searched.length > 0
-                                ? searched.map(post => (
-                                      <Card
-                                          key={post.id}
-                                          title={post.title}
-                                          {...post}
-                                      />
-                                  ))
-                                : // <BoardList />
-                                  boardList.map(post => (
-                                      <Card
-                                          key={post.id}
-                                          title={post.title}
-                                          {...post}
-                                      />
-                                  ))}
-                            {hasSearched && searched.length === 0 && (
+                            {hasSearched && searched.length > 0 ? (
+                                searched.map(post => (
+                                    <Card
+                                        key={post.id}
+                                        title={post.title}
+                                        {...post}
+                                    />
+                                ))
+                            ) : searched.length === 0 && hasSearched ? (
                                 <p>No search results found.</p>
+                            ) : (
+                                boardList.map(post => (
+                                    <Card
+                                        key={post.id}
+                                        title={post.title}
+                                        {...post}
+                                    />
+                                ))
                             )}
                         </div>
                     </div>

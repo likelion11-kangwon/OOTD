@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../styles/board.scss';
+import ClearButton from '../../assets/images/x-button.png';
 
 const SearchForm = ({ userValue, onChange, onKeyDown, onClick }) => {
     return (
@@ -13,7 +14,11 @@ const SearchForm = ({ userValue, onChange, onKeyDown, onClick }) => {
             />
             {userValue && (
                 <button type="button" onClick={onClick} className="clearButton">
-                    Clear
+                    <img
+                        src={ClearButton}
+                        alt="clear-button"
+                        className="clear-button"
+                    />
                 </button>
             )}
         </form>
