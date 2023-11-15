@@ -10,7 +10,7 @@ const BoardList = () => {
     useEffect(() => {
         const getBoardList = async () => {
             try {
-                const resp = await axios.get('http://localhost:8090/posts', {
+                const resp = await axios.get('/api/post/pages', {
                     withCredentials: true,
                 });
                 setBoardList([...resp.data]);

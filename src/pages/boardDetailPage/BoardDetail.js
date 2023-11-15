@@ -7,6 +7,7 @@ import Comment from '../../components/comment/Comment';
 import heartImg from '../../assets/images/heart.svg';
 import profileImg from '../../assets/images/profile.png';
 import '../../styles/boardDetail.scss';
+import Likes from '../../components/likes/Likes';
 
 //상세페이지
 function BoardDetail() {
@@ -54,7 +55,8 @@ function BoardDetail() {
                     />
                     <div className="postCardT">
                         <div>{title}</div>
-                        <img src={heartImg} alt="like" />
+                        {/* <img src={heartImg} alt="like" /> */}
+                        <Likes />
                     </div>
                     <div>{contents}</div>
                 </div>

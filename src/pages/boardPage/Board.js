@@ -49,7 +49,7 @@ const Board = () => {
         setSearched([]);
         setUserValue('');
         try {
-            const response = await axios.get('http://localhost:8090/posts', {
+            const response = await axios.get('/api/post/pages', {
                 params: {
                     category: Category,
                 },
@@ -66,7 +66,7 @@ const Board = () => {
     useEffect(() => {
         const getBoardList = async () => {
             try {
-                const resp = await axios.get('http://localhost:8090/posts', {
+                const resp = await axios.get('/api/post/pages', {
                     withCredentials: true,
                 });
                 setBoardList([...resp.data]);
@@ -78,25 +78,6 @@ const Board = () => {
 
         getBoardList();
     }, []);
-
-    // useEffect(() => {
-    //     const fetchPostsByCategory = async () => {
-    //         try {
-    //             const response = await axios.get(
-    //                 'http://localhost:8080/api/post/pages',
-    //                 {
-    //                     withCredentials: true,
-    //                 },
-    //             );
-
-    //             setBoardList([...response.data]);
-    //         } catch (err) {
-    //             console.log('Error fetching posts by category:', err);
-    //         }
-    //     };
-
-    //     fetchPostsByCategory();
-    // }, [selectedCategory]);
 
     useEffect(() => {
         if (searching) {
@@ -169,21 +150,27 @@ const Board = () => {
                         <div className="row">
                             {hasSearched && searched.length > 0 ? (
                                 searched.map(post => (
-                                    <Card
-                                        key={post.id}
-                                        title={post.title}
-                                        {...post}
-                                    />
+                                    <Link to={`/post/${post.postId}`}>
+                                        <Card
+                                            key={post.postId}
+                                            title={post.title}
+                                            image={post.imageUrl}
+                                            {...post}
+                                        />
+                                    </Link>
                                 ))
                             ) : searched.length === 0 && hasSearched ? (
                                 <p>No search results found.</p>
                             ) : (
                                 boardList.map(post => (
-                                    <Card
-                                        key={post.id}
-                                        title={post.title}
-                                        {...post}
-                                    />
+                                    <Link to={`/post/${post.postId}`}>
+                                        <Card
+                                            key={post.postId}
+                                            title={post.title}
+                                            image={post.imageUrl}
+                                            {...post}
+                                        />
+                                    </Link>
                                 ))
                             )}
                         </div>
