@@ -1,12 +1,7 @@
 import React from 'react';
-import searchIcon from '../../assets/images/searchIcon.png';
 import '../../styles/board.scss';
 
-const SearchForm = ({ userValue, onChange, onKeyDown, onClick, onClear }) => {
-    // const handleClear = () => {
-    //     onClear();
-    // };
-
+const SearchForm = ({ userValue, onChange, onKeyDown, onClick }) => {
     return (
         <form className="search" onSubmit={onClick}>
             <input
@@ -17,17 +12,10 @@ const SearchForm = ({ userValue, onChange, onKeyDown, onClick, onClear }) => {
                 onKeyDown={onKeyDown}
             />
             {userValue && (
-                <button type="button" onClick={onClear} className="clearButton">
+                <button type="button" onClick={onClick} className="clearButton">
                     Clear
                 </button>
             )}
-            {/* <button type="button" onClick={onClick}>
-                <img
-                    src={searchIcon}
-                    alt="search-icon"
-                    className="search-icon"
-                />
-            </button> */}
         </form>
     );
 };

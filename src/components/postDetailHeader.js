@@ -1,5 +1,5 @@
-import './postUploadHeader.scss';
 import { useNavigate } from 'react-router-dom';
+import './postUploadHeader.scss';
 
 const PostDetailHeader = () => {
     const navigate = useNavigate();
@@ -7,10 +7,12 @@ const PostDetailHeader = () => {
         navigate('/board');
     };
     return (
-        <div className="postUHeader">
-            <button onClick={navigateToBoard} className="backBtn">
-                &lt;Back
-            </button>
+        <div className="postUHeader-wrapper">
+            <div className="postUHeader">
+                <button onClick={navigateToBoard} className="backBtn">
+                    &lt;Back
+                </button>
+            </div>
         </div>
     );
 };

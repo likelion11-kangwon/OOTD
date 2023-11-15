@@ -18,19 +18,24 @@ const Main = () => {
     };
 
     return (
-        <div>
+        <div className="main-wrapper">
             <header>
-                <div className="logo">
-                    <button onClick={navigateToMain} className="logo-icon">
-                        <h1>WIYO¿</h1>
+                <div className="header-wrapper">
+                    <div className="logo">
+                        <button onClick={navigateToMain} className="logo-icon">
+                            <h1>WIYO¿</h1>
+                        </button>
+                    </div>
+                    <button
+                        onClick={navigateToMyPage}
+                        className="move-to-mypage"
+                    >
+                        <img src={toMypageIcon} className="tomypage" />
                     </button>
                 </div>
-                <button onClick={navigateToMyPage} className="move-to-mypage">
-                    <img src={toMypageIcon} className="tomypage" />
-                </button>
             </header>
-            <body>
-                <section className="main-top-section">
+            <section className="main-top-section">
+                <div className="main-top-wrapper">
                     <div className="one">
                         <h1>Put on</h1>
                     </div>
@@ -45,8 +50,10 @@ const Main = () => {
                     <h3>
                         <a>ootd:</a>outfit of the day
                     </h3>
-                    <h3>다양하고 색다른 ootd를 한 곳에서</h3>
-                </section>
+                    <h4>다양하고 색다른 ootd를 한 곳에서</h4>
+                </div>
+            </section>
+            <div className="main-board-wrapper">
                 <div className="board-bar">
                     <div className="board-bar-text">
                         <h2>BOARD</h2>
@@ -66,7 +73,7 @@ const Main = () => {
                         <Board />
                     </div>
                 </section>
-            </body>
+            </div>
         </div>
     );
 };

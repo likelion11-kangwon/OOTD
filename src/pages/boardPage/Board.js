@@ -4,14 +4,17 @@ import axios from 'axios';
 import Header from '../../components/header/BoardHeader';
 import Card from '../../components/board/Card';
 import SearchForm from '../../components/search/SearchForm';
+import CategoryBar from '../../components/board/CategoryBar';
+import BoardList from '../../components/board/BoardList';
 import '../../styles/board.scss';
 
 const Board = () => {
     const [boardList, setBoardList] = useState([]);
     const [userValue, setUserValue] = useState('');
-    const [selectedCategory, setSelectedCategory] = useState('category');
+    const [selectedCategory, setSelectedCategory] = useState('all');
     const [searched, setSearched] = useState([]);
     const [searching, setSearching] = useState(false);
+    const [hasSearched, setHasSearched] = useState(false);
 
     const categories = ['all', 'clothes', 'shoes', 'acc'];
 
@@ -47,6 +50,7 @@ const Board = () => {
                     withCredentials: true,
                 });
                 setBoardList([...resp.data]);
+                console.log('Success fetching data');
             } catch (err) {
                 console.log('Error fetching data:', err);
             }
@@ -59,7 +63,7 @@ const Board = () => {
     //     const fetchPostsByCategory = async () => {
     //         try {
     //             const response = await axios.get(
-    //                 `http://localhost:8090/posts/category/${selectedCategory}`,
+    //                 'http://localhost:8080/api/post/pages',
     //                 {
     //                     withCredentials: true,
     //                 },
@@ -91,13 +95,16 @@ const Board = () => {
             }
 
             setSearched(filteredList);
+            console.log('success to search');
+            console.log(filteredList);
             setSearching(false);
+            setHasSearched(true);
         }
     }, [searching, userValue, selectedCategory, boardList]);
 
     return (
         <>
-            <div>
+            <div className="wrapper">
                 <div className="board-header">
                     <Header />
                 </div>
@@ -123,36 +130,43 @@ const Board = () => {
                             </select>
                         </div>
                         <div className="search-box">
-                            <div className="search-box">
+                            <div className="search">
                                 <SearchForm
                                     userValue={userValue}
                                     onChange={setUserValue}
                                     onKeyDown={handleSearch}
-                                    onClick={handleSearch}
-                                    onClear={handleClear}
+                                    onClick={handleClear}
                                 />
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="board-container">
-                    <div className="row">
-                        {searched.length > 0
-                            ? searched.map(post => (
-                                  <Card
-                                      key={post.id}
-                                      title={post.title}
-                                      {...post}
-                                  />
-                              ))
-                            : // <BoardList />
-                              boardList.map(post => (
-                                  <Card
-                                      key={post.id}
-                                      title={post.title}
-                                      {...post}
-                                  />
-                              ))}
+                <div className="board-body">
+                    <div className="category-bar-section">
+                        <CategoryBar />
+                    </div>
+                    <div className="board-container">
+                        <div className="row">
+                            {hasSearched && searched.length > 0
+                                ? searched.map(post => (
+                                      <Card
+                                          key={post.id}
+                                          title={post.title}
+                                          {...post}
+                                      />
+                                  ))
+                                : // <BoardList />
+                                  boardList.map(post => (
+                                      <Card
+                                          key={post.id}
+                                          title={post.title}
+                                          {...post}
+                                      />
+                                  ))}
+                            {hasSearched && searched.length === 0 && (
+                                <p>No search results found.</p>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>

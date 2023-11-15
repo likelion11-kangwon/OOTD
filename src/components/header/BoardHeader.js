@@ -12,13 +12,15 @@ const BoardHeader = () => {
     };
 
     return (
-        <div className="postUHeader">
-            <button onClick={navigateToMain} className="backBtn">
-                &lt;Back
-            </button>
-            <button onClick={navigateToMyPage} className="move-to-mypage">
-                <img src={toMypageIcon} className="tomypage" />
-            </button>
+        <div className="postUHeader-wrapper">
+            <div className="postUHeader">
+                <button onClick={navigateToMain} className="backBtn">
+                    &lt;Back
+                </button>
+                <button onClick={navigateToMyPage} className="move-to-mypage">
+                    <img src={toMypageIcon} className="tomypage" />
+                </button>
+            </div>
         </div>
     );
 };

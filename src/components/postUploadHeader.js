@@ -6,16 +6,18 @@ function PostUHeader({ headTitle }) {
     const navigator = useNavigate();
 
     return (
-        <div className="postUHeader">
-            <button
-                className="backBtn"
-                onClick={() => {
-                    navigator('/board');
-                }}
-            >
-                &lt;Back
-            </button>
-            <h1>{headTitle}</h1>
+        <div className="postUHeader-wrapper">
+            <div className="postUHeader">
+                <button
+                    className="backBtn"
+                    onClick={() => {
+                        navigator('/board');
+                    }}
+                >
+                    &lt;Back
+                </button>
+                <h1>{headTitle}</h1>
+            </div>
         </div>
     );
 }
