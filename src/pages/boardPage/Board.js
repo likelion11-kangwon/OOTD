@@ -2,12 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import Header from '../../components/header/BoardHeader';
-import Card from '../../components/board/Card';
+// import Card from '../../components/board/Card';
 import SearchForm from '../../components/search/SearchForm';
 import CategoryBar from '../../components/board/CategoryBar';
-// import BoardList from '../../components/board/BoardList';
+import { PictureBox, NumberBox } from '../../components/paging';
 import '../../styles/board.scss';
-import BoardList from '../../components/board/BoardList';
 
 const Board = () => {
     const [allBoardList, setAllBoardList] = useState([]);
@@ -18,6 +17,7 @@ const Board = () => {
     const [searched, setSearched] = useState([]);
     const [searching, setSearching] = useState(false);
     const [hasSearched, setHasSearched] = useState(false);
+    const [currentPage, setCurrentPage] = useState(0);
 
     const categories = ['all', 'clothes', 'shoes', 'acc'];
 
@@ -163,40 +163,81 @@ const Board = () => {
                     <CategoryBar onSelectCategory={handleCategoryBar} />
                 </div>
                 <div className="board-container">
-                    <div className="row">
+                    <div className="picture-container">
                         {hasSearched && searched.length > 0 ? (
-                            searched.map(post => {
-                                if (post != null) {
+                            searched.map((posts, idx) => {
+                                if (currentPage === idx) {
                                     return (
-                                        <Link to={`/board/${post.postId}`}>
-                                            <Card
-                                                key={post.postId}
-                                                title={post.title}
-                                                image={post.imageUrl}
-                                                {...post}
-                                            />
-                                        </Link>
+                                        <>
+                                            {posts.map((post, index) => {
+                                                if (post != null) {
+                                                    return (
+                                                        <PictureBox
+                                                            key={index}
+                                                            postId={post.postId}
+                                                            imageUrl={
+                                                                post.imageUrl
+                                                            }
+                                                            title={post.title}
+                                                            navigate={navigate}
+                                                        />
+                                                    );
+                                                }
+                                            })}
+                                        </>
                                     );
                                 }
                             })
                         ) : searched.length === 0 && hasSearched ? (
                             <p>No search results found.</p>
                         ) : (
-                            boardList.map(post => {
-                                if (post != null) {
+                            boardList.map((posts, idx) => {
+                                if (currentPage === idx) {
                                     return (
-                                        <Link to={`/board/${post.postId}`}>
-                                            <Card
-                                                key={post.postId}
-                                                title={post.title}
-                                                image={post.imageUrl}
-                                                {...post}
-                                            />
-                                        </Link>
+                                        <>
+                                            {posts.map((post, index) => {
+                                                if (post != null) {
+                                                    return (
+                                                        <PictureBox
+                                                            key={index}
+                                                            postId={post.postId}
+                                                            imageUrl={
+                                                                post.imageUrl
+                                                            }
+                                                            title={post.title}
+                                                            navigate={navigate}
+                                                        />
+                                                    );
+                                                }
+                                            })}
+                                        </>
                                     );
                                 }
                             })
                         )}
+                    </div>
+                    <div className="number-container">
+                        {hasSearched && searched.length > 0
+                            ? searched.map((_, idx) => {
+                                  return (
+                                      <NumberBox
+                                          key={idx}
+                                          idx={idx}
+                                          currentPage={currentPage}
+                                          setCurrentPage={setCurrentPage}
+                                      />
+                                  );
+                              })
+                            : boardList.map((_, idx) => {
+                                  return (
+                                      <NumberBox
+                                          key={idx}
+                                          idx={idx}
+                                          currentPage={currentPage}
+                                          setCurrentPage={setCurrentPage}
+                                      />
+                                  );
+                              })}
                     </div>
                 </div>
             </div>
