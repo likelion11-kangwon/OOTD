@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import PostCate from './postEditZip/postCate';
@@ -8,8 +8,12 @@ import nullImg from '../assets/images/uploadImage.png';
 import './postEdit_comp.scss';
 
 function PostEditComp({ imgP }) {
-    const [imgPath, setImgPath] = useState(imgP);
+    const [imgPath, setImgPath] = useState();
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        setImgPath(imgP);
+    }, [imgP]);
 
     const handleImage = async e => {
         const file = e.target.files[0];
@@ -19,7 +23,7 @@ function PostEditComp({ imgP }) {
         if (file) {
             setImgPath(URL.createObjectURL(file));
             const bodyFormData = new FormData();
-            bodyFormData.append('multipartFile', file);
+            bodyFormData.append('imageFile', file);
             dispatch(actions._setImage(bodyFormData));
         }
     };
@@ -39,7 +43,7 @@ function PostEditComp({ imgP }) {
             <div id="imgIn">
                 <div>
                     <img
-                        src={imgPath ? imgPath : nullImg}
+                        src={imgPath != null ? imgPath : nullImg}
                         alt="게시물 이미지"
                     />
                 </div>

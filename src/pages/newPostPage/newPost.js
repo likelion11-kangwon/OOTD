@@ -23,15 +23,33 @@ function NewPost() {
         }
     };
     /**
-     * {userId: int, Category: String, imageFile, title: String, contents: String} -> 성공시{status: 200}
+     * {userId: int, Category: String, title: String, contents: String} -> 성공시{status: 200}
      */
     const postNewPost = () => {
+        let postData = {
+            title: store.getState().postReducer.title,
+            category: store.getState().postReducer.category,
+            contents: store.getState().postReducer.contents,
+        };
+        const formData = new FormData();
+        formData.append(
+            'post',
+            new Blob([JSON.stringify(postData)], { type: 'application/json' }),
+            {
+                contentType: 'application/json',
+            },
+        );
+        formData.append(
+            'imageFile',
+            store.getState().postReducer.imageFile.get('imageFile'),
+        );
         axios
-            .post(
-                `/api/post`,
-                { withCredentials: true },
-                store.getState().postReducer,
-            )
+            .post(`/api/post`, formData, {
+                withCredentials: true,
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            })
             .then(() => {
                 navigate('/main');
             })

@@ -19,7 +19,7 @@ function PostModify() {
                     withCredentials: true,
                 });
 
-                setImgP(res.data.postImageUrl);
+                setImgP(res.data.imageUrl);
                 store.dispatch(actions._setImage(null));
                 store.dispatch(actions._setCategory(res.data.category));
                 store.dispatch(actions._setTitle(res.data.title));
@@ -47,12 +47,32 @@ function PostModify() {
      * {postId: int, Category: String, imageFile, title: String, contents: String} ->성공/실패 코드
      */
     const postPatch = () => {
+        let postData = {
+            title: store.getState().postReducer.title,
+            category: store.getState().postReducer.category,
+            contents: store.getState().postReducer.contents,
+        };
+        const formData = new FormData();
+        formData.append(
+            'post',
+            new Blob([JSON.stringify(postData)], { type: 'application/json' }),
+            {
+                contentType: 'application/json',
+            },
+        );
+        if (store.getState().postReducer.imageFile != null) {
+            formData.append(
+                'imageFile',
+                store.getState().postReducer.imageFile.get('imageFile'),
+            );
+        }
         axios
-            .patch(
-                `/api/post/${postId}`,
-                { withCredentials: true },
-                store.getState().postReducer,
-            )
+            .put(`/api/post/${postId}`, formData, {
+                withCredentials: true,
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            })
             .then(() => {
                 navigate('/mypage');
             })

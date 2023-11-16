@@ -33,15 +33,17 @@ const BoardList = () => {
                             return (
                                 <>
                                     {posts.map((post, index) => {
-                                        return (
-                                            <PictureBox
-                                                key={index}
-                                                postId={post.postId}
-                                                imageUrl={post.imageUrl}
-                                                title={post.title}
-                                                navigate={navigate}
-                                            />
-                                        );
+                                        if (post != null) {
+                                            return (
+                                                <PictureBox
+                                                    key={index}
+                                                    postId={post.postId}
+                                                    imageUrl={post.imageUrl}
+                                                    title={post.title}
+                                                    navigate={navigate}
+                                                />
+                                            );
+                                        }
                                     })}
                                 </>
                             );

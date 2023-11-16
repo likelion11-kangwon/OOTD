@@ -165,29 +165,37 @@ const Board = () => {
                 <div className="board-container">
                     <div className="row">
                         {hasSearched && searched.length > 0 ? (
-                            searched.map(post => (
-                                <Link to={`/board/${post.postId}`}>
-                                    <Card
-                                        key={post.postId}
-                                        title={post.title}
-                                        image={post.imageUrl}
-                                        {...post}
-                                    />
-                                </Link>
-                            ))
+                            searched.map(post => {
+                                if (post != null) {
+                                    return (
+                                        <Link to={`/board/${post.postId}`}>
+                                            <Card
+                                                key={post.postId}
+                                                title={post.title}
+                                                image={post.imageUrl}
+                                                {...post}
+                                            />
+                                        </Link>
+                                    );
+                                }
+                            })
                         ) : searched.length === 0 && hasSearched ? (
                             <p>No search results found.</p>
                         ) : (
-                            boardList.map(post => (
-                                <Link to={`/board/${post.postId}`}>
-                                    <Card
-                                        key={post.postId}
-                                        title={post.title}
-                                        image={post.imageUrl}
-                                        {...post}
-                                    />
-                                </Link>
-                            ))
+                            boardList.map(post => {
+                                if (post != null) {
+                                    return (
+                                        <Link to={`/board/${post.postId}`}>
+                                            <Card
+                                                key={post.postId}
+                                                title={post.title}
+                                                image={post.imageUrl}
+                                                {...post}
+                                            />
+                                        </Link>
+                                    );
+                                }
+                            })
                         )}
                     </div>
                 </div>

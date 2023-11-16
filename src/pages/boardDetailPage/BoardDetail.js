@@ -24,7 +24,7 @@ function BoardDetail() {
                 console.log(resp.data);
                 setTitle(resp.data.title);
                 setUsername(resp.data.username);
-                setContents(resp.data.content);
+                setContents(resp.data.contents);
                 setImageUrl(resp.data.imageUrl);
             })
             .catch(err => {
