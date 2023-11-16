@@ -51,7 +51,7 @@ const Board = () => {
             const resp = await axios.get('/api/post/pages', {
                 withCredentials: true,
             });
-            setBoardList(...resp.data.postsSimple);
+            setBoardList(resp.data.postsSimple);
             setAllBoardList(...resp.data.postsSimple);
             console.log('Success fetching data');
         } catch (err) {
