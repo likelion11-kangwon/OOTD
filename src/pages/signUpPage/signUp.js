@@ -122,8 +122,8 @@ function SignUp() {
                                             isPasswordMatch === null
                                                 ? 'initial'
                                                 : isPasswordMatch
-                                                ? 'green'
-                                                : 'red',
+                                                  ? 'green'
+                                                  : 'red',
                                     }}
                                 />
                             </div>

@@ -10,7 +10,7 @@ import './styles/reset.scss';
 import './styles/common.scss';
 import store from './store';
 
-axios.defaults.baseURL = 'http://localhost:8080';
+axios.defaults.baseURL = 'http://43.202.41.4:8080';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
